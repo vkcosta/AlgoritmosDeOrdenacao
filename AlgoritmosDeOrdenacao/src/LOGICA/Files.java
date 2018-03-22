@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ *0
  * @author mgarcia Classe contendo métodos de manipulação de arquivos a serem
  * utilizados no trabalho. Esta classe está disponivel integralmente em
  * https://github.com/NaturesProphet/UtilidadesJava
