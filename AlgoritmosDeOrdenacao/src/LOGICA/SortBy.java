@@ -64,7 +64,6 @@ public class SortBy {
     public static void InsertionSort(int[] nums) {
 
         for (int i = 1; i < nums.length; i++) {
-
             int aux = nums[i];
             int z = i;
 
@@ -72,13 +71,11 @@ public class SortBy {
                 nums[z] = nums[z - 1];
                 z--;
             }
+
             nums[z] = aux;
-
         }
-
     }
-    
-    
+
     
     
     public static void main(String[] args) {
