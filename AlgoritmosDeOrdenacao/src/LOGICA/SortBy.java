@@ -18,6 +18,7 @@
 package LOGICA;
 
 import static LOGICA.Util.Vetores.imprime;
+import javax.swing.JOptionPane;
 
 /**
  * Esta classe contem métodos estáticos para ordenar sequencias numéricas os
@@ -29,26 +30,42 @@ public class SortBy {
 
     /**
      * Este método utiliza o algoritmo BubbleSort<br>
-     * Utilize este método para ordenar sequências numéricas pequenas em ordem
-     * crescente
+     * Utilize este método para ordenar sequências numéricas pequenas na ordem
+     * escolhida
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada pelo algoritmo Bubble Sort
+     * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
-    public static void BubbleSort(int[] nums) {
+    public static void BubbleSort(int[] nums, String ordem) {
         int aux;
         /*posição de memória para um inteiro que será utilizada para
         armazenar o valor temporário entre uma troca e outra. */
-        for (int z = 0; z < nums.length; z++) {
-            for (int i = 1; i < nums.length; i++) {
-                if (nums[i] < nums[i - 1]) {
-                    //troca as posições dos dois numeros comparados
-                    aux = nums[i];
-                    nums[i] = nums[i - 1];
-                    nums[i - 1] = aux;
+        if (ordem == "cre") {
+            for (int z = 0; z < nums.length; z++) {
+                for (int i = 1; i < nums.length; i++) {
+                    if (nums[i] < nums[i - 1]) {
+                        //troca as posições dos dois numeros comparados
+                        aux = nums[i];
+                        nums[i] = nums[i - 1];
+                        nums[i - 1] = aux;
+                    }
                 }
             }
+        } else if (ordem == "dec") {
+            for (int z = 0; z < nums.length; z++) {
+                for (int i = 1; i < nums.length; i++) {
+                    if (nums[i] > nums[i - 1]) {
+                        //troca as posições dos dois numeros comparados
+                        aux = nums[i];
+                        nums[i] = nums[i - 1];
+                        nums[i - 1] = aux;
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ordem invalida");
         }
     }
 
@@ -59,7 +76,7 @@ public class SortBy {
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
-     * ordenada pelo algoritmo Insertion Sort
+     * @param ordem String contendo ordenada pelo algoritmo Insertion Sort
      */
     public static void InsertionSort(int[] nums) {
 
@@ -76,12 +93,10 @@ public class SortBy {
         }
     }
 
-    
-    
     public static void main(String[] args) {
         //testes aqui
         int[] x = {23, 44, 11, 22, 0, 7, 55, 99, 88, 123, 400, 2, 0, 15, 8};
-        InsertionSort(x);
+        BubbleSort(x,"dec");
         imprime(x);
     }
 
