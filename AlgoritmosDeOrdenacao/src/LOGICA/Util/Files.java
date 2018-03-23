@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LOGICA;
+package LOGICA.Util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *0
  * @author mgarcia Classe contendo métodos de manipulação de arquivos a serem
  * utilizados no trabalho. Esta classe está disponivel integralmente em
  * https://github.com/NaturesProphet/UtilidadesJava
