@@ -17,7 +17,7 @@
  */
 package LOGICA;
 
-import LOGICA.Util.Vetores;
+import static LOGICA.Util.Vetores.imprime;
 
 /**
  * Esta classe contem métodos estáticos para ordenar sequencias numéricas os
@@ -52,10 +52,40 @@ public class SortBy {
         }
     }
 
+    /**
+     * Este método utiliza o algoritmo InsertionSort<br>
+     * Utilize este método para ordenar sequências numéricas pequenas em ordem
+     * crescente
+     *
+     * @author Mateus garcia
+     * @param nums Array de Inteiros contendo a sequencia numerica a ser
+     * ordenada pelo algoritmo Insertion Sort
+     */
+    public static void InsertionSort(int[] nums) {
+
+        for (int i = 1; i < nums.length; i++) {
+
+            int aux = nums[i];
+            int z = i;
+
+            while ((z > 0) && (nums[z - 1] > aux)) {
+                nums[z] = nums[z - 1];
+                z--;
+            }
+            nums[z] = aux;
+
+        }
+
+    }
+    
+    
+    
+    
     public static void main(String[] args) {
         //testes aqui
-        
-
+        int[] x = {23, 44, 11, 22, 0, 7, 55, 99, 88, 123, 400, 2, 0, 15, 8};
+        InsertionSort(x);
+        imprime(x);
     }
 
 }

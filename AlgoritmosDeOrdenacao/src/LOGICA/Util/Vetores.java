@@ -38,9 +38,13 @@ public class Vetores {
             array.append(Vetor[i]).append(", ");
         }
         //remove os espaços e a virgula do final
-        array.delete(array.length()-2, array.length()-1);
-        array.deleteCharAt(array.length()-1);
+        array.delete(array.length() - 2, array.length() - 1);
+        array.deleteCharAt(array.length() - 1);
         return array.toString();
+    }
+
+    public static void imprime(int[] vetor) {
+        System.out.println(ToString(vetor));
     }
 
 }
