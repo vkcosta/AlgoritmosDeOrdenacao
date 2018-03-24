@@ -142,16 +142,16 @@ public class SortBy {
 
         } else if (ordem == "dec") {
             for (int i = 0; i < nums.length; i++) {
-                int menorPosicao = i;
+                int maiorPosicao = i;
                 for (int j = (i + 1); j < nums.length; j++) {
-                    if (nums[j] > nums[menorPosicao]) {
-                        menorPosicao = j;
+                    if (nums[j] > nums[maiorPosicao]) {
+                        maiorPosicao = j;
                     }
                 }
-                if (nums[i] != nums[menorPosicao]) {
+                if (nums[i] != nums[maiorPosicao]) {
                     int temp = nums[i];
-                    nums[i] = nums[menorPosicao];
-                    nums[menorPosicao] = temp;
+                    nums[i] = nums[maiorPosicao];
+                    nums[maiorPosicao] = temp;
                 }
             }
 
@@ -166,5 +166,4 @@ public class SortBy {
         SelectionSort(x, "cre");
         imprime(x);
     }
-
 }
