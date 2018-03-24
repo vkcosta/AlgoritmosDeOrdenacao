@@ -31,7 +31,8 @@ public class SortBy {
     /**
      * Este método utiliza o algoritmo BubbleSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas na ordem
-     * escolhida
+     * escolhida<br>
+     * Complexidade: n²
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -72,7 +73,8 @@ public class SortBy {
     /**
      * Este método utiliza o algoritmo InsertionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
-     * crescente
+     * crescente<br>
+     * Complexidade: n²
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -111,10 +113,57 @@ public class SortBy {
         }
     }
 
+    /**
+     * Este método utiliza o algoritmo SelectionSort<br>
+     * Utilize este método para ordenar sequências numéricas pequenas em ordem
+     * crescente<br>
+     * Complexidade: n²
+     *
+     * @author Mateus garcia
+     * @param nums Array de Inteiros contendo a sequencia numerica a ser
+     * @param ordem String contendo "dec" ou "cre", definindo a ordem
+     */
+    public static void SelectionSort(int[] nums, String ordem) {
+        if (ordem == "cre") {
+
+            for (int i = 0; i < nums.length; i++) {
+                int menorPosicao = i;
+                for (int j = (i + 1); j < nums.length; j++) {
+                    if (nums[j] < nums[menorPosicao]) {
+                        menorPosicao = j;
+                    }
+                }
+                if (nums[i] != nums[menorPosicao]) {
+                    int temp = nums[i];
+                    nums[i] = nums[menorPosicao];
+                    nums[menorPosicao] = temp;
+                }
+            }
+
+        } else if (ordem == "dec") {
+            for (int i = 0; i < nums.length; i++) {
+                int menorPosicao = i;
+                for (int j = (i + 1); j < nums.length; j++) {
+                    if (nums[j] > nums[menorPosicao]) {
+                        menorPosicao = j;
+                    }
+                }
+                if (nums[i] != nums[menorPosicao]) {
+                    int temp = nums[i];
+                    nums[i] = nums[menorPosicao];
+                    nums[menorPosicao] = temp;
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ordem invalida");
+        }
+    }
+
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        InsertionSort(x, "dec");
+        SelectionSort(x, "cre");
         imprime(x);
     }
 
