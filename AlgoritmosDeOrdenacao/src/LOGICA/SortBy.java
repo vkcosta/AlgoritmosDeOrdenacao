@@ -76,27 +76,45 @@ public class SortBy {
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
-     * @param ordem String contendo ordenada pelo algoritmo Insertion Sort
+     * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
-    public static void InsertionSort(int[] nums) {
+    public static void InsertionSort(int[] nums, String ordem) {
 
-        for (int i = 1; i < nums.length; i++) {
-            int aux = nums[i];
-            int z = i;
+        if (ordem == "cre") {
+            for (int i = 1; i < nums.length; i++) {
+                int aux = nums[i];
+                int z = i;
 
-            while ((z > 0) && (nums[z - 1] > aux)) {
-                nums[z] = nums[z - 1];
-                z--;
+                while ((z > 0) && (nums[z - 1] > aux)) {
+                    nums[z] = nums[z - 1];
+                    z--;
+                }
+
+                nums[z] = aux;
             }
 
-            nums[z] = aux;
+        } else if (ordem == "dec") {
+            for (int i = 1; i < nums.length; i++) {
+                int aux = nums[i];
+                int z = i;
+
+                while ((z > 0) && (nums[z - 1] < aux)) {
+                    nums[z] = nums[z - 1];
+                    z--;
+                }
+
+                nums[z] = aux;
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ordem invalida");
         }
     }
 
     public static void main(String[] args) {
         //testes aqui
-        int[] x = {23, 44, 11, 22, 0, 7, 55, 99, 88, 123, 400, 2, 0, 15, 8};
-        BubbleSort(x,"dec");
+        int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
+        InsertionSort(x, "dec");
         imprime(x);
     }
 
