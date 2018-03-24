@@ -17,7 +17,11 @@
  */
 package VISAO;
 
+import LOGICA.Util.Files;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -26,6 +30,7 @@ import javax.swing.JOptionPane;
  * @author mgarcia
  */
 public class MainApp extends javax.swing.JFrame {
+
     File entrada;
     File saida;
 
@@ -147,44 +152,48 @@ public class MainApp extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.showOpenDialog(patchLB);
-        entrada  = fc.getSelectedFile();
+        entrada = fc.getSelectedFile();
         patchLB.setText(entrada.getPath());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        boolean valid = true;
-        if (null == entrada) {
+        boolean valid = true; //auxiliar na validação do formulario
+        if (null == entrada) { //checa arquivo de entrada
             valid = false;
             JOptionPane.showMessageDialog(this, "Nenhum arquivo de entrada selecionado");
             jButton1.grabFocus();
         }
-        if (AlgBOX.getSelectedIndex() == 0) {
+        if (AlgBOX.getSelectedIndex() == 0) { //checa algoritmo selecionado
             valid = false;
             JOptionPane.showMessageDialog(this, "Nenhum algoritmo foi selecionado.");
             AlgBOX.grabFocus();
         }
-        if(ordemBOX.getSelectedIndex() == 0) {
+        if (ordemBOX.getSelectedIndex() == 0) { //checa ordem selecionada
             valid = false;
             JOptionPane.showMessageDialog(this, "Nenhuma ordem de execução foi selecionada");
             ordemBOX.grabFocus();
         }
-        if (saidaTF.getText().isEmpty()) {
+        if (saidaTF.getText().isEmpty()) { //checa arquivo de saída
             valid = false;
             JOptionPane.showMessageDialog(this, "nenhum arquivo de saída especificado");
             saidaTF.grabFocus();
         }
-        
-        
-        if (valid) {
-            
 
-            
+        //se nada deu falso, o formulário foi preenchido, bora executar
+        if (valid) {
+            saida = new File(saidaTF.getText() + ".txt");
+            try {
+                if (saida.createNewFile()) {
+                    JOptionPane.showMessageDialog(this, "Arquivo de saída gerado com êxito");
+                } else {
+                    JOptionPane.showMessageDialog(this, "O arquivo não pode ser criado, pois ele ja existe!");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Falha ao criar arquivo de saída\n+ex");
+                dispose();
+            }
         }
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
