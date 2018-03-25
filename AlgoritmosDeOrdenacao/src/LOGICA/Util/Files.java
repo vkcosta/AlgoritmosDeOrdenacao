@@ -382,4 +382,61 @@ public class Files {
                     + "que não foi encontrado no local especificado");
         }
     }
+
+    /**
+     * Este método le um arquivo de texto contendo apenas numeros inteiros
+     * separados por espaços e devolve um Array de Inteiros contendo estes
+     * numeros na ordem em que se encontram no arquivo
+     *
+     * @author Mateus Garcia
+     * @param patch String contendo o caminho completo para o arquivo
+     * @throws Exception caso ocorra um erro ao ler o arquivo ou ao converter
+     * Strings em numeros durante o processo
+     * @return Array de inteiros int[] contendo os numeros inteiros lidos do
+     * arquivo
+     *
+     */
+    public static int[] getIntArray(String patch) throws Exception {
+
+        ArrayList<String> content = getAllLines(patch); //pega o conteudo do arquivo
+
+        ArrayList<Integer> vetor = new ArrayList();
+        /* declara a lista que conterá os numeros que serão processados 
+        a seguir e posteriormente será armazenada em um array de inteiros 
+        e entregue como resultado */
+
+        for (int i = 0; i < content.size(); i++) {
+            String linha = content.get(i);
+            String num = "";
+            boolean lendo = false;
+            for (int z = 0; z < linha.length(); z++) {
+                if (linha.charAt(z) == ' ') {
+                    if (lendo == false) {
+                        continue;
+                    } else {
+                        int n = Integer.parseInt(num);
+                        vetor.add(n);
+                        num = "";
+                        lendo = false;
+                    }
+                } else {
+                    lendo = true;
+                    num += linha.charAt(z);
+                }
+                /* ao fim da varredura, adiciona o ultimo valor válido lido na 
+                lista. O fim da varredura implicaria na não inclusão deste numero,
+                por isso este if foi adicionado, garantindo a integridade */
+                if (z == linha.length() - 1) {
+                    int n = Integer.parseInt(num);
+                    vetor.add(n);
+                }
+            }
+        }
+        int[] Array = new int[vetor.size()];
+        for (int i = 0; i < vetor.size(); i++) {
+            Array[i] = vetor.get(i);
+        }
+        return Array;
+    }
+
 }
