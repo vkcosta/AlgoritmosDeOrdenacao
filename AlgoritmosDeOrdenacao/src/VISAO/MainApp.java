@@ -17,7 +17,11 @@
  */
 package VISAO;
 
+import static LOGICA.SortBy.BubbleSort;
+import static LOGICA.SortBy.InsertionSort;
+import static LOGICA.SortBy.SelectionSort;
 import LOGICA.Util.Files;
+import LOGICA.Util.Vetores;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -181,17 +185,59 @@ public class MainApp extends javax.swing.JFrame {
 
         //se nada deu falso, o formulário foi preenchido, bora executar
         if (valid) {
+
+            String ordem; //parametro que será passado para o método
+
             saida = new File(saidaTF.getText() + ".txt");
+            int[] Array = {0, 0}; //inicialização do vetor a ser ordenado
+
             try {
-                if (saida.createNewFile()) {
-                    JOptionPane.showMessageDialog(this, "Arquivo de saída gerado com êxito");
-                } else {
+                if (!saida.createNewFile()) {
                     JOptionPane.showMessageDialog(this, "O arquivo não pode ser criado, pois ele ja existe!");
                 }
             } catch (IOException ex) {
                 Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Falha ao criar arquivo de saída\n+ex");
                 dispose();
+            }
+            try {
+                Array = Files.getIntArray(entrada.getPath());
+            } catch (Exception ex) {
+                Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao recuperar dados do "
+                        + "arquivo de entrada\n" + ex);
+                dispose();
+            }
+            switch (ordemBOX.getSelectedIndex()) {
+                case 1:
+                    ordem = "cre";
+                    break;
+                case 2:
+                    ordem = "dec";
+                    break;
+                default:
+                    ordem = "ERRO"; //situação WTF
+            }
+
+            switch (AlgBOX.getSelectedIndex()) {
+                case 1: //bubble sort
+                    BubbleSort(Array, ordem);
+                    break;
+                case 2: // insertion sort
+                    InsertionSort(Array, ordem);
+                    break;
+                case 3: //selection sort
+                    SelectionSort(Array, ordem);
+                    break;
+            }
+
+            try {
+                Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
+                JOptionPane.showMessageDialog(this, "Arquivo" + saida.getPath()
+                        + "gravado com êxito.");
+            } catch (IOException ex) {
+                Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao gravar no arquivo de saida\n" + ex);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed

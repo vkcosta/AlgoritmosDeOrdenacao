@@ -21,7 +21,7 @@ import static LOGICA.Util.Vetores.imprime;
 import javax.swing.JOptionPane;
 
 /**
- * Esta classe contem métodos estáticos para ordenar sequencias numéricas os
+ * Esta classe contem métodos estáticos para ordenar sequencias numéricas. Os
  * métodos implementam os algoritmos solicitados.
  *
  * @author mgarcia
@@ -32,7 +32,7 @@ public class SortBy {
      * Este método utiliza o algoritmo BubbleSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas na ordem
      * escolhida<br>
-     * Complexidade: n²
+     * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -74,10 +74,11 @@ public class SortBy {
      * Este método utiliza o algoritmo InsertionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: n²
+     * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
+     * ordenada
      * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
     public static void InsertionSort(int[] nums, String ordem) {
@@ -117,10 +118,9 @@ public class SortBy {
      * Este método utiliza o algoritmo SelectionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: n²
-     *
+     * Complexidade: O(n²)
      * @author Mateus garcia
-     * @param nums Array de Inteiros contendo a sequencia numerica a ser
+     * @param nums Array de Inteiros contendo a sequencia numerica a ser ordenada
      * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
     public static void SelectionSort(int[] nums, String ordem) {
