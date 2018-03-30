@@ -165,4 +165,30 @@ public class Files {
         }
         return Array;
     }
+
+    /**
+     * Método que ADICIONA uma linha no FINAL do arquivo informado. Utilize este
+     * método para escrever um conteúdo no final de um arquivo sem alterar o
+     * conteúdo anterior.
+     *
+     * @author Mateus Garcia
+     * @param path caminho para o arquivo especificado
+     * @param texto String com o conteúdo a ser escrito no final do arquivo.
+     * @throws IOException
+     * @throws FileNotFoundException caso o arquivo informado não exista
+     *
+     */
+    public static void AddThisLineAtEOF(String path, String texto) throws IOException {
+        if (AreYouHere(path)) {
+            FileWriter fw = new FileWriter(path, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(texto);
+            bw.newLine();
+            bw.close();
+        } else {
+            throw new FileNotFoundException("O programa buscou por um arquivo "
+                    + "que não foi encontrado no local especificado");
+        }
+
+    }
 }

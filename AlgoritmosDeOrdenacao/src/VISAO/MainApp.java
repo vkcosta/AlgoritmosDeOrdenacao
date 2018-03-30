@@ -185,6 +185,8 @@ public class MainApp extends javax.swing.JFrame {
 
         //se nada deu falso, o formulário foi preenchido, bora executar
         if (valid) {
+            long start; // tempo em milisegundos do começo da execução
+            long elapsed = 0; //diferença de tempo entre o começo e o final da execução
 
             String ordem; //parametro que será passado para o método
 
@@ -221,18 +223,29 @@ public class MainApp extends javax.swing.JFrame {
 
             switch (AlgBOX.getSelectedIndex()) {
                 case 1: //bubble sort
+                    start = System.currentTimeMillis();
                     BubbleSort(Array, ordem);
+                    elapsed = System.currentTimeMillis() - start;
                     break;
                 case 2: // insertion sort
+                    start = System.currentTimeMillis();
                     InsertionSort(Array, ordem);
+                    elapsed = System.currentTimeMillis() - start;
                     break;
                 case 3: //selection sort
+                    start = System.currentTimeMillis();
                     SelectionSort(Array, ordem);
+                    elapsed = System.currentTimeMillis() - start;
                     break;
             }
 
             try {
+                String tempo = ("\n\nTempo de execução: " + elapsed / 60000
+                        + " Minutos, " + elapsed % 60000 + ","
+                        + (elapsed % 60000) % 1000 + " segundos");
+
                 Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
+                Files.AddThisLineAtEOF(saida.getPath(), tempo);
                 JOptionPane.showMessageDialog(this, "Arquivo" + saida.getPath()
                         + "gravado com êxito.");
             } catch (IOException ex) {
