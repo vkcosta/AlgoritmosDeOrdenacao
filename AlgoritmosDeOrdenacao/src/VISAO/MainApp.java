@@ -107,7 +107,7 @@ public class MainApp extends javax.swing.JFrame {
                                 .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(AlgBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                                 .addComponent(ordemBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -246,8 +246,8 @@ public class MainApp extends javax.swing.JFrame {
 
                 Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
                 Files.AddThisLineAtEOF(saida.getPath(), tempo);
-                JOptionPane.showMessageDialog(this, "Arquivo" + saida.getPath()
-                        + "gravado com êxito.");
+                JOptionPane.showMessageDialog(this, "Arquivo " + saida.getPath()
+                        + " gravado com êxito.");
             } catch (IOException ex) {
                 Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao gravar no arquivo de saida\n" + ex);
