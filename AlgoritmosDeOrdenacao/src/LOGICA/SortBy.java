@@ -30,26 +30,39 @@ public class SortBy {
 
     /**
      * Este método utiliza o algoritmo BubbleSort<br>
-     * Utilize este método para ordenar sequências numéricas pequenas na ordem
-     * escolhida<br>
+     * Utilize este método para ordenar sequências numéricas pequenas
      * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada pelo algoritmo Bubble Sort
+     * @param quant quantidade de numeros a ser ordenada. esta quantidade
+     * representa o pedaço do vetor que este algoritmo irá processar
      */
-    public static void BubbleSort(int[] nums) {
+    public static void BubbleSort(int[] nums, int quant) {
         int aux;
         /*posição de memória para um inteiro que será utilizada para
         armazenar o valor temporário entre uma troca e outra. */
+        int tamanho = 0; // tamanho do vetor a ser organizado
 
-        for (int z = 0; z < nums.length; z++) {
-            for (int i = 1; i < nums.length; i++) {
+        //esta verificação define o pedaço do vetor a ser ordenado
+        if (quant == 0) {
+            tamanho = nums.length;
+        } else if (quant > 0 && quant <= nums.length) {
+            tamanho = quant;
+        } else {
+            System.out.println("BubleSort: Valor invalido para a quantidade");
+            System.exit(1);
+        }
+
+        for (int z = 0; z < tamanho; z++) {
+            for (int i = 1; i < tamanho; i++) {
                 if (nums[i] < nums[i - 1]) {
                     //troca as posições dos dois numeros comparados
                     aux = nums[i];
                     nums[i] = nums[i - 1];
                     nums[i - 1] = aux;
+                    System.out.println("troca"); //debug
                 }
             }
         }
@@ -165,7 +178,7 @@ public class SortBy {
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        mergeSort(x, 0, 9);
+        BubbleSort(x, 3);
         imprime(x);
     }
 }
