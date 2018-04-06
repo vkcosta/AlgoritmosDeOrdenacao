@@ -242,9 +242,8 @@ public class MainApp extends javax.swing.JFrame {
             }
 
             try {
-                String tempo = ("\n\nTempo de execução: " + elapsed / 60000
-                        + " Minutos, " + elapsed % 60000 + ","
-                        + (elapsed % 60000) % 1000 + " segundos");
+                String tempo = ("\n\nTempo de execução: " + elapsed
+                        + " milisegundos");
 
                 Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
                 Files.AddThisLineAtEOF(saida.getPath(), tempo);
