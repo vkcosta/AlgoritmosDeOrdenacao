@@ -59,7 +59,7 @@ public class MainApp extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         saidaTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        quantTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         entradaTF = new javax.swing.JTextField();
@@ -87,7 +87,7 @@ public class MainApp extends javax.swing.JFrame {
 
         jLabel1.setText("Nome do arquivo de saída");
 
-        jTextField2.setText("0");
+        quantTF.setText("0");
 
         jLabel2.setText("Quantidade de numeros a ser ordenada ( deixe 0 para ordenar TODOS )");
 
@@ -114,7 +114,7 @@ public class MainApp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quantTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(entradaTF)
@@ -140,7 +140,7 @@ public class MainApp extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -177,6 +177,18 @@ public class MainApp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nenhum algoritmo foi selecionado.");
             AlgBOX.grabFocus();
         }
+        try {
+            int num = Integer.parseInt(quantTF.getText());
+            if (num < 0) {
+                valid = false;
+                JOptionPane.showMessageDialog(this, "quantidade nao pode ser negativa");
+                quantTF.grabFocus();
+            }
+        } catch (Exception e) { // o valor em quantTF não é um numero inteiro
+            valid = false;
+            JOptionPane.showMessageDialog(this, "quantidade invalida");
+            quantTF.grabFocus();
+        }
 
         if (saidaTF.getText().isEmpty()) { //checa arquivo de saída
             valid = false;
@@ -188,8 +200,7 @@ public class MainApp extends javax.swing.JFrame {
         if (valid) {
             long start; // tempo em milisegundos do começo da execução
             long elapsed = 0; //diferença de tempo entre o começo e o final da execução
-
-            String ordem; //parametro que será passado para o método
+            int quant = Integer.parseInt(quantTF.getText());
 
             saida = new File(saidaTF.getText() + ".txt");
             int[] Array = {0, 0}; //inicialização do vetor a ser ordenado
@@ -215,17 +226,17 @@ public class MainApp extends javax.swing.JFrame {
             switch (AlgBOX.getSelectedIndex()) {
                 case 1: //bubble sort
                     start = System.currentTimeMillis();
-                    BubbleSort(Array);
+                    BubbleSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
                 case 2: // insertion sort
                     start = System.currentTimeMillis();
-                    InsertionSort(Array);
+                    InsertionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
                 case 3: //selection sort
                     start = System.currentTimeMillis();
-                    SelectionSort(Array);
+                    SelectionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
             }
@@ -290,7 +301,7 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField quantTF;
     private javax.swing.JTextField saidaTF;
     // End of variables declaration//GEN-END:variables
 }

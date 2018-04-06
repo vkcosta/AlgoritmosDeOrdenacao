@@ -116,12 +116,25 @@ public class SortBy {
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada
+     * @param quant quantidade de numeros a ser ordenada. esta quantidade
+     * representa o pedaço do vetor que este algoritmo irá processar
      */
-    public static void SelectionSort(int[] nums) {
+    public static void SelectionSort(int[] nums, int quant) {
 
-        for (int i = 0; i < nums.length; i++) {
+        int tamanho = 0; // tamanho do pedaço de vetor a ser organizado
+        //esta verificação define o pedaço do vetor a ser ordenado
+        if (quant == 0) {
+            tamanho = nums.length;
+        } else if (quant > 0 && quant <= nums.length) {
+            tamanho = quant;
+        } else {
+            System.out.println("BubleSort: Valor invalido para a quantidade");
+            System.exit(1);
+        }
+
+        for (int i = 0; i < tamanho; i++) {
             int menorPosicao = i;
-            for (int j = (i + 1); j < nums.length; j++) {
+            for (int j = (i + 1); j < tamanho; j++) {
                 if (nums[j] < nums[menorPosicao]) {
                     menorPosicao = j;
                 }
@@ -191,7 +204,7 @@ public class SortBy {
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        InsertionSort(x, 10);
+        SelectionSort(x, 9);
         imprime(x);
     }
 }
