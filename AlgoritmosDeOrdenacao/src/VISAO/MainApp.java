@@ -240,10 +240,11 @@ public class MainApp extends javax.swing.JFrame {
                     SelectionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 4:
+                case 4:// merge sort
                     start = System.currentTimeMillis();
                     MergeSort(Array, 0, quant);
                     elapsed = System.currentTimeMillis() - start;
+                    break;
             }
 
             try {
