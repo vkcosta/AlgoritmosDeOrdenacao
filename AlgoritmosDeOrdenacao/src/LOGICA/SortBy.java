@@ -37,36 +37,21 @@ public class SortBy {
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada pelo algoritmo Bubble Sort
-     * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
-    public static void BubbleSort(int[] nums, String ordem) {
+    public static void BubbleSort(int[] nums) {
         int aux;
         /*posição de memória para um inteiro que será utilizada para
         armazenar o valor temporário entre uma troca e outra. */
-        if (ordem == "cre") {
-            for (int z = 0; z < nums.length; z++) {
-                for (int i = 1; i < nums.length; i++) {
-                    if (nums[i] < nums[i - 1]) {
-                        //troca as posições dos dois numeros comparados
-                        aux = nums[i];
-                        nums[i] = nums[i - 1];
-                        nums[i - 1] = aux;
-                    }
+
+        for (int z = 0; z < nums.length; z++) {
+            for (int i = 1; i < nums.length; i++) {
+                if (nums[i] < nums[i - 1]) {
+                    //troca as posições dos dois numeros comparados
+                    aux = nums[i];
+                    nums[i] = nums[i - 1];
+                    nums[i - 1] = aux;
                 }
             }
-        } else if (ordem == "dec") {
-            for (int z = 0; z < nums.length; z++) {
-                for (int i = 1; i < nums.length; i++) {
-                    if (nums[i] > nums[i - 1]) {
-                        //troca as posições dos dois numeros comparados
-                        aux = nums[i];
-                        nums[i] = nums[i - 1];
-                        nums[i - 1] = aux;
-                    }
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Ordem invalida");
         }
     }
 
@@ -79,39 +64,21 @@ public class SortBy {
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada
-     * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
-    public static void InsertionSort(int[] nums, String ordem) {
+    public static void InsertionSort(int[] nums) {
 
-        if (ordem == "cre") {
-            for (int i = 1; i < nums.length; i++) {
-                int aux = nums[i];
-                int z = i;
+        for (int i = 1; i < nums.length; i++) {
+            int aux = nums[i];
+            int z = i;
 
-                while ((z > 0) && (nums[z - 1] > aux)) {
-                    nums[z] = nums[z - 1];
-                    z--;
-                }
-
-                nums[z] = aux;
+            while ((z > 0) && (nums[z - 1] > aux)) {
+                nums[z] = nums[z - 1];
+                z--;
             }
 
-        } else if (ordem == "dec") {
-            for (int i = 1; i < nums.length; i++) {
-                int aux = nums[i];
-                int z = i;
-
-                while ((z > 0) && (nums[z - 1] < aux)) {
-                    nums[z] = nums[z - 1];
-                    z--;
-                }
-
-                nums[z] = aux;
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Ordem invalida");
+            nums[z] = aux;
         }
+
     }
 
     /**
@@ -123,43 +90,23 @@ public class SortBy {
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
      * ordenada
-     * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
-    public static void SelectionSort(int[] nums, String ordem) {
-        if (ordem == "cre") {
+    public static void SelectionSort(int[] nums) {
 
-            for (int i = 0; i < nums.length; i++) {
-                int menorPosicao = i;
-                for (int j = (i + 1); j < nums.length; j++) {
-                    if (nums[j] < nums[menorPosicao]) {
-                        menorPosicao = j;
-                    }
-                }
-                if (nums[i] != nums[menorPosicao]) {
-                    int temp = nums[i];
-                    nums[i] = nums[menorPosicao];
-                    nums[menorPosicao] = temp;
+        for (int i = 0; i < nums.length; i++) {
+            int menorPosicao = i;
+            for (int j = (i + 1); j < nums.length; j++) {
+                if (nums[j] < nums[menorPosicao]) {
+                    menorPosicao = j;
                 }
             }
-
-        } else if (ordem == "dec") {
-            for (int i = 0; i < nums.length; i++) {
-                int maiorPosicao = i;
-                for (int j = (i + 1); j < nums.length; j++) {
-                    if (nums[j] > nums[maiorPosicao]) {
-                        maiorPosicao = j;
-                    }
-                }
-                if (nums[i] != nums[maiorPosicao]) {
-                    int temp = nums[i];
-                    nums[i] = nums[maiorPosicao];
-                    nums[maiorPosicao] = temp;
-                }
+            if (nums[i] != nums[menorPosicao]) {
+                int temp = nums[i];
+                nums[i] = nums[menorPosicao];
+                nums[menorPosicao] = temp;
             }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Ordem invalida");
         }
+
     }
 
     /**
