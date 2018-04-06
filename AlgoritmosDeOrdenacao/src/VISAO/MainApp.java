@@ -19,6 +19,7 @@ package VISAO;
 
 import static LOGICA.SortBy.BubbleSort;
 import static LOGICA.SortBy.InsertionSort;
+import static LOGICA.SortBy.MergeSort;
 import static LOGICA.SortBy.SelectionSort;
 import LOGICA.Util.Files;
 import LOGICA.Util.Vetores;
@@ -76,7 +77,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort" }));
+        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort" }));
 
         jButton2.setText("Execute");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +240,10 @@ public class MainApp extends javax.swing.JFrame {
                     SelectionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
+                case 4:
+                    start = System.currentTimeMillis();
+                    MergeSort(Array, 0, quant);
+                    elapsed = System.currentTimeMillis() - start;
             }
 
             try {

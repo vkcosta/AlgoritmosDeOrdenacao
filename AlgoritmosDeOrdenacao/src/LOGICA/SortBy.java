@@ -62,7 +62,6 @@ public class SortBy {
                     aux = nums[i];
                     nums[i] = nums[i - 1];
                     nums[i - 1] = aux;
-                    System.out.println("troca"); //debug
                 }
             }
         }
@@ -192,11 +191,11 @@ public class SortBy {
      * @param inicio posição inicial da ordem
      * @param fim posição final da ordem
      */
-    public static void mergeSort(int[] vetor, int inicio, int fim) {
+    public static void MergeSort(int[] vetor, int inicio, int fim) {
         int q = (inicio + fim) / 2;
         if (inicio < fim) {
-            mergeSort(vetor, inicio, q);
-            mergeSort(vetor, q + 1, fim);
+            MergeSort(vetor, inicio, q);
+            MergeSort(vetor, q + 1, fim);
             intercala(vetor, inicio, q, fim);
         }
     }
