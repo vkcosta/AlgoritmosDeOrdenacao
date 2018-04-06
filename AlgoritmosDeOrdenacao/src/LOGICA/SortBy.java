@@ -119,8 +119,10 @@ public class SortBy {
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
      * Complexidade: O(n²)
+     *
      * @author Mateus garcia
-     * @param nums Array de Inteiros contendo a sequencia numerica a ser ordenada
+     * @param nums Array de Inteiros contendo a sequencia numerica a ser
+     * ordenada
      * @param ordem String contendo "dec" ou "cre", definindo a ordem
      */
     public static void SelectionSort(int[] nums, String ordem) {
@@ -160,10 +162,63 @@ public class SortBy {
         }
     }
 
+    /**
+     * Algoritmo auxiliar para o MergeSort, ele intercala vetores menores <br>
+     * Complexidade: O(log n) (eu acho...)
+     *
+     * @author Mateus Garcia
+     *
+     * @param subvetor vetor a ser intercalado
+     * @param inicio posição inicial da intercalação
+     * @param meio posição central da intercalação
+     * @param fim posição final da intercalação
+     */
+    private static void intercala(int[] subvetor, int inicio, int meio, int fim) {
+        int[] aux = new int[fim - inicio + 1];
+        int a = inicio;
+        int b = meio + 1;
+        int h = 0;
+        while (a <= meio && b <= fim) {
+            if (subvetor[a] < subvetor[b]) {
+                aux[h++] = subvetor[a++];
+            } else {
+                aux[h++] = subvetor[b++];
+            }
+        }
+        while (a <= meio) {
+            aux[h++] = subvetor[a++];
+        }
+        while (b <= fim) {
+            aux[h++] = subvetor[b++];
+        }
+        for (h = 0; h < aux.length; h++) {
+            subvetor[inicio++] = aux[h];
+        }
+    }
+
+    /**
+     * Algoritmo MergeSort. Utilize este método para ordenar sequencias
+     * numéricas grandes<br>
+     * Complexidade: O(n log n)
+     *
+     * @author Mateus Garcia
+     * @param vetor Array de inteiros a ser ordenado
+     * @param inicio posição inicial da ordem
+     * @param fim posição final da ordem
+     */
+    public static void mergeSort(int[] vetor, int inicio, int fim) {
+        int q = (inicio + fim) / 2;
+        if (inicio < fim) {
+            mergeSort(vetor, inicio, q);
+            mergeSort(vetor, q + 1, fim);
+            intercala(vetor, inicio, q, fim);
+        }
+    }
+
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        SelectionSort(x, "cre");
+        mergeSort(x, 0, 9);
         imprime(x);
     }
 }
