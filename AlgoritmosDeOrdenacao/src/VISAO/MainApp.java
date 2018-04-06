@@ -20,6 +20,7 @@ package VISAO;
 import static LOGICA.SortBy.BubbleSort;
 import static LOGICA.SortBy.InsertionSort;
 import static LOGICA.SortBy.MergeSort;
+import static LOGICA.SortBy.QuickSort;
 import static LOGICA.SortBy.SelectionSort;
 import LOGICA.Util.Files;
 import LOGICA.Util.Vetores;
@@ -77,7 +78,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort" }));
+        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort" }));
 
         jButton2.setText("Execute");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +179,7 @@ public class MainApp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nenhum algoritmo foi selecionado.");
             AlgBOX.grabFocus();
         }
-        try {
+        try { //checa a validade do valor para quantidade a ser ordenada
             int num = Integer.parseInt(quantTF.getText());
             if (num < 0) {
                 valid = false;
@@ -242,11 +243,26 @@ public class MainApp extends javax.swing.JFrame {
                     break;
                 case 4:// merge sort
                     start = System.currentTimeMillis();
-                    MergeSort(Array, 0, quant);
+                    if (quant != 0) {
+                        MergeSort(Array, 0, quant);
+                    } else {
+                        MergeSort(Array, 0, Array.length - 1);
+                    }
                     elapsed = System.currentTimeMillis() - start;
+                    break;
+                case 5: //quick sort
+                    start = System.currentTimeMillis();
+                    if (quant != 0) {
+                        QuickSort(Array, 0, quant);
+                    } else {
+                        QuickSort(Array, 0, Array.length - 1);
+                    }
+                    elapsed = System.currentTimeMillis() - start;
+                    System.out.println("Elapsed: " + elapsed);
                     break;
             }
 
+            //faz a escrita dos dados processados no arquivo de saída
             try {
                 String tempo = ("\n\nTempo de execução: " + elapsed
                         + " milisegundos");

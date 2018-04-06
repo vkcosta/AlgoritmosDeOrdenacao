@@ -102,7 +102,7 @@
     <Component class="javax.swing.JComboBox" name="AlgBOX">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Selecione o Algoritmo&quot;, &quot;Bubble Sort&quot;, &quot;Insertion Sort&quot;, &quot;Selection Sort&quot;, &quot;Merge Sort&quot; })" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Selecione o Algoritmo&quot;, &quot;Bubble Sort&quot;, &quot;Insertion Sort&quot;, &quot;Selection Sort&quot;, &quot;Merge Sort&quot;, &quot;Quick Sort&quot; })" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
