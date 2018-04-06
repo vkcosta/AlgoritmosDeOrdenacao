@@ -200,10 +200,58 @@ public class SortBy {
         }
     }
 
+    /**
+     * Metodo auxiliar do algoritmo QuickSort
+     *
+     * @author Mateus Garcia
+     * @param vetor
+     * @param inicio
+     * @param fim
+     * @return
+     */
+    private static int separar(int[] vetor, int inicio, int fim) {
+        int pivo = vetor[inicio];
+        int i = inicio + 1, f = fim;
+        while (i <= f) {
+            if (vetor[i] <= pivo) {
+                i++;
+            } else if (pivo < vetor[f]) {
+                f--;
+            } else {
+                int troca = vetor[i];
+                vetor[i] = vetor[f];
+                vetor[f] = troca;
+                i++;
+                f--;
+            }
+        }
+        vetor[inicio] = vetor[f];
+        vetor[f] = pivo;
+        return f;
+    }
+
+    /**
+     * Algoritmo QuickSort. Utilize este método para ordenar sequências
+     * numéricas grandes relativamente ordenadas <br>
+     * Complexidade O(n log n) podendo chegar a O(n²)
+     *
+     * @author Mateus Garcia
+     * @param vetor Array de inteiros contendo os numeros a serem ordenados
+     * @param inicio posição inicial do Array onde se inicia o processo
+     * @param fim posição final do array onde o processo chega.
+     */
+    public static void QuickSort(int[] vetor, int inicio, int fim) {
+        if (inicio < fim) {
+            int posicaoPivo = separar(vetor, inicio, fim);
+            QuickSort(vetor, inicio, posicaoPivo - 1);
+            QuickSort(vetor, posicaoPivo + 1, fim);
+        }
+    }
+
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        SelectionSort(x, 9);
+        QuickSort(x, 0, 8);
         imprime(x);
     }
 }
