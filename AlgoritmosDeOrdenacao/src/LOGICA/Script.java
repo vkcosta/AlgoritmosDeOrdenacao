@@ -603,7 +603,6 @@ public class Script extends Thread {
             }
 
         }
-
     }
 
     /**
