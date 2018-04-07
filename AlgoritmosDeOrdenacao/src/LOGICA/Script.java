@@ -17,13 +17,38 @@
  */
 package LOGICA;
 
+import static LOGICA.SortBy.BubbleSort;
 import LOGICA.Util.Files;
+import static LOGICA.DAO.TestesDAO.AddRegistro;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mgarcia
  */
 public class Script extends Thread {
+
+    /**
+     * Método para verificar se os arquivos apontados existem. Usarei este
+     * método para verificar a integridade existencial dos arquivos antes de
+     * iniciar os testes.
+     *
+     * @author Mateus Garcia
+     * @param array vetor de strings com patchs para arquivos
+     * @return boolean true se estiver tudo OK. false senão.
+     */
+    public boolean FileCheck(String[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (!Files.AreYouHere(array[i])) {
+                System.out.println("Arquivo não encontrado:\n" + array[i]);
+                JOptionPane.showMessageDialog(null, "Arquivo não encontrado:\n" + array[i]);
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * Esta Thread executa os testes e registra os resultados no banco de dados
@@ -93,21 +118,102 @@ public class Script extends Thread {
         DecrescentesDistintos[8] = "Test-inputs/decrescentes/distintos/dec-dist-580.txt";
         DecrescentesDistintos[9] = "Test-inputs/decrescentes/distintos/dec-dist-640.txt";
         DecrescentesDistintos[10] = "Test-inputs/decrescentes/distintos/dec-dist-700.txt";
-        
-        
-        
-        
-        
-        
-        
-        
+
+        //testando a integridade existencial dos arquivos antes de proseguir
+        boolean valid = true;
+        valid = FileCheck(AleatoriosDistintos);
+        if (valid) {
+            valid = FileCheck(CrescentesDistintos);
+        }
+        if (valid) {
+            valid = FileCheck(DecrescentesDistintos);
+        }
+        if (!valid) {
+            System.out.println("a verificação de existência "
+                    + "dos arquivos falhou. cheque a pasta Test-inputs");
+
+            JOptionPane.showMessageDialog(null, "a verificação de existência "
+                    + "dos arquivos falhou. cheque a pasta Test-inputs");
+            System.exit(1);
+        }
+
+        //pergunta ao usuario quantas execuções devem ser feitas pra cada teste
+        int NumExec = 0;
+        while (NumExec <= 0) {
+            String NumExecStr = JOptionPane.showInputDialog(null, "Quantas execuções "
+                    + "você quer fazer para para cada teste?");
+            try {
+                NumExec = Integer.parseInt(NumExecStr);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "resposta invalida. informe um numero inteiro");
+            }
+        }
 
         /*
         ######################## PARTE 1 ########################
         ################ TESTES DO BUBBLE SORT ##################
-        
-        
+        #########################################################
          */
+        //aleatorios distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    BubbleSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "dist", elapsed);
+                    System.out.println("Registro de BubbleSort " + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
     }
 
+    /**
+     * Este método informa ao laço de repetição que o invoca, a quantidade de
+     * elementos presentes na posição i, conforme descrito nos comentarios
+     * iniciais desta classe
+     *
+     * @author Mateus Garcia
+     * @param i posição do vetor de patchs
+     * @return inteiro dos elementos presentes no arquivo especificado
+     */
+    public static int elementos(int i) {
+        switch (i) {
+            case 0:
+                return 100000;
+            case 1:
+                return 160000;
+            case 2:
+                return 220000;
+            case 3:
+                return 280000;
+            case 4:
+                return 340000;
+            case 5:
+                return 400000;
+            case 6:
+                return 460000;
+            case 7:
+                return 520000;
+            case 8:
+                return 580000;
+            case 9:
+                return 640000;
+            case 10:
+                return 700000;
+        }
+        //se nao der return ate aqui, entao ta errado....
+        JOptionPane.showMessageDialog(null, "erro ao executar elementos()");
+        return 0;
+    }
+
+    //testes aqui
+    public static void main(String[] args) {
+        new Script().run();
+    }
 }
