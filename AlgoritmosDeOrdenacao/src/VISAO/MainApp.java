@@ -18,6 +18,7 @@
 package VISAO;
 
 import static LOGICA.SortBy.BubbleSort;
+import static LOGICA.SortBy.CountingSort;
 import static LOGICA.SortBy.HeapSort;
 import static LOGICA.SortBy.InsertionSort;
 import static LOGICA.SortBy.MergeSort;
@@ -79,7 +80,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort", "Heap Sort" }));
+        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort", "Heap Sort", "Counting Sort" }));
 
         jButton2.setText("Execute");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,6 +265,11 @@ public class MainApp extends javax.swing.JFrame {
                 case 6: //Heap Sort
                     start = System.currentTimeMillis();
                     HeapSort(Array, quant);
+                    elapsed = System.currentTimeMillis() - start;
+                    break;
+                case 7:
+                    start = System.currentTimeMillis();
+                    Array = CountingSort(Array);
                     elapsed = System.currentTimeMillis() - start;
                     break;
             }
