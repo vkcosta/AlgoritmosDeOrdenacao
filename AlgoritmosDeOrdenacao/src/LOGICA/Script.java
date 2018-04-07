@@ -21,6 +21,7 @@ import static LOGICA.SortBy.BubbleSort;
 import LOGICA.Util.Files;
 import static LOGICA.DAO.TestesDAO.AddRegistro;
 import static LOGICA.SortBy.InsertionSort;
+import static LOGICA.SortBy.SelectionSort;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -219,7 +220,6 @@ public class Script extends Thread {
         ############### TESTES DO INSERTION SORT ################
         #########################################################
          */
-        
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
             for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
@@ -278,21 +278,71 @@ public class Script extends Thread {
             }
 
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        /*
+        ######################## PARTE 3 ########################
+        ############### TESTES DO SELECTION SORT ################
+        #########################################################
+         */
+        //aleatorios distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "dist", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
     }
 
     /**
