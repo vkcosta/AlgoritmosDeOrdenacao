@@ -107,6 +107,11 @@ public class MainApp extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         jButton3.setText("Rodar o script de testes automático");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Ou experimente os métodos manuais abaixo como requisitados pelo trabalho...");
 
@@ -316,6 +321,10 @@ public class MainApp extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(this, "Em construção...");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
