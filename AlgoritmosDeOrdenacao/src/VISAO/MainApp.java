@@ -226,22 +226,22 @@ public class MainApp extends javax.swing.JFrame {
             }
 
             switch (AlgBOX.getSelectedIndex()) {
-                case 1: //bubble sort
+                case 1: //bubble HeapSort
                     start = System.currentTimeMillis();
                     BubbleSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 2: // insertion sort
+                case 2: // insertion HeapSort
                     start = System.currentTimeMillis();
                     InsertionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 3: //selection sort
+                case 3: //selection HeapSort
                     start = System.currentTimeMillis();
                     SelectionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 4:// merge sort
+                case 4:// merge HeapSort
                     start = System.currentTimeMillis();
                     if (quant != 0) {
                         MergeSort(Array, 0, quant);
@@ -250,7 +250,7 @@ public class MainApp extends javax.swing.JFrame {
                     }
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 5: //quick sort
+                case 5: //quick HeapSort
                     start = System.currentTimeMillis();
                     if (quant != 0) {
                         QuickSort(Array, 0, quant);

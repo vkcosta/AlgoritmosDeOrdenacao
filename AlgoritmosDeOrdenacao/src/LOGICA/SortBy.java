@@ -31,7 +31,7 @@ public class SortBy {
     /**
      * Este método utiliza o algoritmo BubbleSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas
-     * Complexidade: O(n²)
+     * Complexidade: O(tamanho²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -71,7 +71,7 @@ public class SortBy {
      * Este método utiliza o algoritmo InsertionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: O(n²)
+     * Complexidade: O(tamanho²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -110,7 +110,7 @@ public class SortBy {
      * Este método utiliza o algoritmo SelectionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: O(n²)
+     * Complexidade: O(tamanho²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -149,7 +149,7 @@ public class SortBy {
 
     /**
      * Algoritmo auxiliar para o MergeSort, ele intercala vetores menores <br>
-     * Complexidade: O(log n) (eu acho...)
+     * Complexidade: O(log tamanho) (eu acho...)
      *
      * @author Mateus Garcia
      *
@@ -184,7 +184,7 @@ public class SortBy {
     /**
      * Algoritmo MergeSort. Utilize este método para ordenar sequencias
      * numéricas grandes<br>
-     * Complexidade: O(n log n)
+     * Complexidade: O(tamanho log tamanho)
      *
      * @author Mateus Garcia
      * @param vetor Array de inteiros a ser ordenado
@@ -233,7 +233,7 @@ public class SortBy {
     /**
      * Algoritmo QuickSort. Utilize este método para ordenar sequências
      * numéricas grandes relativamente ordenadas <br>
-     * Complexidade O(n log n) podendo chegar a O(n²)
+     * Complexidade O(tamanho log tamanho) podendo chegar a O(tamanho²)
      *
      * @author Mateus Garcia
      * @param vetor Array de inteiros contendo os numeros a serem ordenados
@@ -248,10 +248,75 @@ public class SortBy {
         }
     }
 
+    /**
+     * O algoritmo HeapSort foi um dos mais complexos para ser compreendido e
+     * contém partes adaptadas de outras fontes na internet
+     *
+     * @param vetor Array de inteiros a ser ordenado
+     * @param quant quantidade de numeros a ser ordenada. esta quantidade
+     * representa o pedaço do vetor que este algoritmo irá processar
+     */
+    public static void HeapSort(int[] vetor, int quant) {
+        //adaptação para a quantidade a ser ordenada
+        int tamanho = vetor.length;
+        if (quant == 0) {
+            tamanho = vetor.length;
+        } else if (quant < 0 || quant > vetor.length) {
+            System.out.println("HeapSort: Quantidade invalida");
+            JOptionPane.showMessageDialog(null, "HeapSort: Quantidade invalida");
+        } else {
+            tamanho = quant;
+        }
+
+        // constroi a pilha remanejando o array
+        for (int i = tamanho / 2 - 1; i >= 0; i--) {
+            empilha(vetor, tamanho, i);
+        }
+
+        // pega um elemento da pilha um por um
+        for (int i = tamanho - 1; i >= 0; i--) {
+            // move a raiz para o final
+            int temp = vetor[0];
+            vetor[0] = vetor[i];
+            vetor[i] = temp;
+
+            empilha(vetor, i, 0);
+        }
+    }
+
+    /**
+     * Método auxiliar do Quick Sort
+     */
+    private static void empilha(int[] subvetor, int n, int i) {
+        int maior = i;  // inicializa o maior como a raiz da arvore
+        int l = 2 * i + 1;  // esquerda = 2*i + 1
+        int r = 2 * i + 2;  // direita = 2*i + 2
+
+        // se o filho da esquerda for maior que a raiz
+        if (l < n && subvetor[l] > subvetor[maior]) {
+            maior = l;
+        }
+
+        // se o filho da direita for maior do que o maior atual
+        if (r < n && subvetor[r] > subvetor[maior]) {
+            maior = r;
+        }
+
+        // se o maior nao é a raiz
+        if (maior != i) {
+            int swap = subvetor[i];
+            subvetor[i] = subvetor[maior];
+            subvetor[maior] = swap;
+
+            //empilha recursivamente a sub-arvore afetada
+            empilha(subvetor, n, maior);
+        }
+    }
+
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        QuickSort(x, 0, 8);
+        HeapSort(x, 3);
         imprime(x);
     }
 }
