@@ -250,7 +250,8 @@ public class SortBy {
 
     /**
      * O algoritmo HeapSort foi um dos mais complexos para ser compreendido e
-     * contém partes adaptadas de outras fontes na internet
+     * contém partes adaptadas de outras fontes na internet <br>
+     * Complexidade: O(n log n)
      *
      * @param vetor Array de inteiros a ser ordenado
      * @param quant quantidade de numeros a ser ordenada. esta quantidade
@@ -313,10 +314,60 @@ public class SortBy {
         }
     }
 
+    /**
+     * Counting Sort, assim como o HeapSort foi um dos mais complexos para ser
+     * compreendido e contém partes adaptadas de outras fontes na internet <br>
+     * Não consegui adaptar uma quantidade a ser organizada como nos outros
+     * algoritmos sem causar prejuizos ao desempenho, portanto o método só está
+     * trabalhando em modo FULL <br>
+     * Complexidade: O(n+k)
+     *
+     * @param vetor sequencia a ser ordenada
+     * @return retorna um novo vetor com os dados já ordenados
+     */
+    public static int[] CountingSort(int[] vetor) {
+
+        //os dados serão ordenados neste vetor auxiliar, 
+        //que será devolvido como resultado do algoritmo
+        int[] aux = new int[vetor.length];
+
+        // encontra o menor e o maior valor
+        int min = vetor[0];
+        int max = vetor[0];
+        for (int i = 1; i < vetor.length; i++) {
+            if (vetor[i] < min) {
+                min = vetor[i];
+            } else if (vetor[i] > max) {
+                max = vetor[i];
+            }
+        }
+
+        // monta o vetor das frequências
+        int[] frequencias = new int[max - min + 1];
+
+        // inicializa ele
+        for (int i = 0; i < vetor.length; i++) {
+            frequencias[vetor[i] - min]++;
+        }
+
+        // recalcula o vetor - cria o vetor de ocorrencias
+        frequencias[0]--;
+        for (int i = 1; i < frequencias.length; i++) {
+            frequencias[i] = frequencias[i] + frequencias[i - 1];
+        }
+
+        //ordena o vetor da direita pra esquerda
+        for (int i = vetor.length - 1; i >= 0; i--) {
+            aux[frequencias[vetor[i] - min]--] = vetor[i];
+        }
+
+        return aux;
+    }
+
     public static void main(String[] args) {
         //testes aqui
         int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        HeapSort(x, 3);
+        x = CountingSort(x);
         imprime(x);
     }
 }
