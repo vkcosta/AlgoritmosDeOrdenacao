@@ -18,6 +18,7 @@
 package VISAO;
 
 import static LOGICA.SortBy.BubbleSort;
+import static LOGICA.SortBy.HeapSort;
 import static LOGICA.SortBy.InsertionSort;
 import static LOGICA.SortBy.MergeSort;
 import static LOGICA.SortBy.QuickSort;
@@ -78,7 +79,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort" }));
+        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort", "Heap Sort" }));
 
         jButton2.setText("Execute");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -226,22 +227,22 @@ public class MainApp extends javax.swing.JFrame {
             }
 
             switch (AlgBOX.getSelectedIndex()) {
-                case 1: //bubble HeapSort
+                case 1: //bubble Sort
                     start = System.currentTimeMillis();
                     BubbleSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 2: // insertion HeapSort
+                case 2: // insertion Sort
                     start = System.currentTimeMillis();
                     InsertionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 3: //selection HeapSort
+                case 3: //selection Sort
                     start = System.currentTimeMillis();
                     SelectionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 4:// merge HeapSort
+                case 4:// merge Sort
                     start = System.currentTimeMillis();
                     if (quant != 0) {
                         MergeSort(Array, 0, quant);
@@ -250,7 +251,7 @@ public class MainApp extends javax.swing.JFrame {
                     }
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 5: //quick HeapSort
+                case 5: //quick Sort
                     start = System.currentTimeMillis();
                     if (quant != 0) {
                         QuickSort(Array, 0, quant);
@@ -259,6 +260,11 @@ public class MainApp extends javax.swing.JFrame {
                     }
                     elapsed = System.currentTimeMillis() - start;
                     System.out.println("Elapsed: " + elapsed);
+                    break;
+                case 6: //Heap Sort
+                    start = System.currentTimeMillis();
+                    HeapSort(Array, quant);
+                    elapsed = System.currentTimeMillis() - start;
                     break;
             }
 
