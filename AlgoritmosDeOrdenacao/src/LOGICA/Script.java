@@ -20,6 +20,7 @@ package LOGICA;
 import static LOGICA.SortBy.BubbleSort;
 import LOGICA.Util.Files;
 import static LOGICA.DAO.TestesDAO.AddRegistro;
+import static LOGICA.SortBy.CountingSort;
 import static LOGICA.SortBy.HeapSort;
 import static LOGICA.SortBy.InsertionSort;
 import static LOGICA.SortBy.MergeSort;
@@ -537,7 +538,71 @@ public class Script extends Thread {
             }
 
         }
-        
+
+        /*
+        ######################## PARTE 7 ########################
+        ###### FINALIZANDO O TESTE DOS VALORES DISTINTOS ########
+        ############### TESTES DO COUNTING SORT #################
+        #########################################################
+         */
+        //aleatorios distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "dist", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
 
     }
 
