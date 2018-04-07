@@ -20,6 +20,7 @@ package LOGICA;
 import static LOGICA.SortBy.BubbleSort;
 import LOGICA.Util.Files;
 import static LOGICA.DAO.TestesDAO.AddRegistro;
+import static LOGICA.SortBy.InsertionSort;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -162,7 +163,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "ale", "dist", elapsed,"BubbleSort");
+                    AddRegistro(elementos(i), "ale", "dist", elapsed, "BubbleSort");
                     System.out.println("Registro de BubbleSort aleatorio"
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
@@ -192,7 +193,7 @@ public class Script extends Thread {
             }
 
         }
-        
+
         //decrescentes distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
             for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
@@ -201,7 +202,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed,"BubbleSort");
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "BubbleSort");
                     System.out.println("Registro de BubbleSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -213,6 +214,85 @@ public class Script extends Thread {
 
         }
 
+        /*
+        ######################## PARTE 2 ########################
+        ############### TESTES DO INSERTION SORT ################
+        #########################################################
+         */
+        
+        //aleatorios distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "dist", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
