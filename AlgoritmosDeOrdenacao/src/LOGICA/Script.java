@@ -162,7 +162,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "ale", "dist", elapsed);
+                    AddRegistro(elementos(i), "ale", "dist", elapsed,"BubbleSort");
                     System.out.println("Registro de BubbleSort aleatorio"
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
@@ -181,7 +181,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed);
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "BubbleSort");
                     System.out.println("Registro de BubbleSort crescente "
                             + elementos(i) + " adicionado");
 
@@ -201,7 +201,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed);
+                    AddRegistro(elementos(i), "cre", "dist", elapsed,"BubbleSort");
                     System.out.println("Registro de BubbleSort decrescente "
                             + elementos(i) + " adicionado");
 

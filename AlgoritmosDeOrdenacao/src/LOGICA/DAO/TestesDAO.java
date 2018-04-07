@@ -42,8 +42,8 @@ public class TestesDAO {
      * @param dados dist ou rep
      * @param tempo inteiro, em milisegundos
      */
-    public static void AddRegistro(int elementos, String ordem, String dados, long tempo) {
-        String sql = "INSERT INTO Testes VALUES (?,?,?,?)";
+    public static void AddRegistro(int elementos, String ordem, String dados, long tempo, String algoritmo) {
+        String sql = "INSERT INTO Testes VALUES (?,?,?,?,?)";
         try {
             Connection con = new ConnectionFactory().getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -51,6 +51,7 @@ public class TestesDAO {
             ps.setString(2, ordem);
             ps.setString(3, dados);
             ps.setLong(4, tempo);
+            ps.setString(5, algoritmo);
             ps.execute();
             ps.close();
             con.close();
