@@ -20,6 +20,7 @@ package LOGICA;
 import static LOGICA.SortBy.BubbleSort;
 import LOGICA.Util.Files;
 import static LOGICA.DAO.TestesDAO.AddRegistro;
+import static LOGICA.SortBy.HeapSort;
 import static LOGICA.SortBy.InsertionSort;
 import static LOGICA.SortBy.MergeSort;
 import static LOGICA.SortBy.QuickSort;
@@ -408,7 +409,7 @@ public class Script extends Thread {
             }
 
         }
-        
+
         /*
         ######################## PARTE 5 ########################
         ################# TESTES DO QUICK SORT ##################
@@ -472,17 +473,70 @@ public class Script extends Thread {
             }
 
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        /*
+        ######################## PARTE 6 ########################
+        ################# TESTES DO HEAP SORT ##################
+        #########################################################
+         */
+        //aleatorios distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "dist", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
         
 
     }
