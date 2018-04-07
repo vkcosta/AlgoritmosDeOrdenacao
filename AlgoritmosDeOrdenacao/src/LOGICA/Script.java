@@ -163,7 +163,8 @@ public class Script extends Thread {
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed);
-                    System.out.println("Registro de BubbleSort " + elementos(i) + " adicionado");
+                    System.out.println("Registro de BubbleSort aleatorio"
+                            + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
                     Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,6 +172,27 @@ public class Script extends Thread {
             }
 
         }
+
+        //crescentes distintos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesDistintos[i]);
+                    long start = System.currentTimeMillis();
+                    BubbleSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "dist", elapsed);
+                    System.out.println("Registro de BubbleSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
     }
 
     /**
