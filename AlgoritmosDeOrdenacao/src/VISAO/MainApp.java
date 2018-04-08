@@ -299,7 +299,7 @@ public class MainApp extends javax.swing.JFrame {
                     HeapSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 7:
+                case 7: //Counting Sort
                     start = System.currentTimeMillis();
                     Array = CountingSort(Array);
                     elapsed = System.currentTimeMillis() - start;
@@ -308,13 +308,13 @@ public class MainApp extends javax.swing.JFrame {
 
             //faz a escrita dos dados processados no arquivo de saída
             try {
-                String tempo = ("\n\nTempo de execução: " + elapsed
+                String tempo = ("\r\n\r\nTempo de execução: " + elapsed
                         + " milisegundos");
 
                 Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
                 Files.AddThisLineAtEOF(saida.getPath(), tempo);
-                JOptionPane.showMessageDialog(this, "Arquivo" + saida.getPath()
-                        + "gravado com êxito.");
+                JOptionPane.showMessageDialog(this, "Arquivo " + saida.getPath()
+                        + " gravado com êxito.");
             } catch (IOException ex) {
                 Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao gravar no arquivo de saida\n" + ex);
