@@ -366,8 +366,9 @@ public class SortBy {
 
     public static void main(String[] args) {
         //testes aqui
-        int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        x = CountingSort(x);
+        //int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
+        int[] x = {0,1,2,3,4,5,6,7,8,9};
+        QuickSort(x, 0, x.length - 1);
         imprime(x);
     }
 }
