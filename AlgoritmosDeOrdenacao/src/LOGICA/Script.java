@@ -177,6 +177,16 @@ public class Script extends Thread {
         if (valid) {
             valid = FileCheck(DecrescentesDistintos);
         }
+        if (valid) {
+            valid = FileCheck(AleatoriosRepetidos);
+        }
+        if (valid) {
+            valid = FileCheck(CrescentesRepetidos);
+        }
+        if (valid) {
+            valid = FileCheck(DecrescentesRepetidos);
+        }
+
         if (!valid) {
             System.out.println("a verificação de existência "
                     + "dos arquivos falhou. cheque a pasta Test-inputs");
@@ -197,6 +207,9 @@ public class Script extends Thread {
                 JOptionPane.showMessageDialog(null, "resposta invalida. informe um numero inteiro");
             }
         }
+
+        //contando tempo total deste script a partir daqui. apenas por curiosidade
+        long inicio = System.currentTimeMillis();
 
         /*
         ######################## PARTE 1 ########################
@@ -646,6 +659,495 @@ public class Script extends Thread {
             }
 
         }
+
+        /*
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        ################## ELEMENTOS REPETIDOS ##################
+        INICIANDO OS TESTES DOS ARQUIVOS COM ELEMENTOS REPETIDOS
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+        #########################################################
+         */
+
+ /*
+        ######################## PARTE 8 ########################
+        ################ TESTES DO BUBBLE SORT ##################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    BubbleSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "BubbleSort");
+                    System.out.println("Registro de BubbleSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    BubbleSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "BubbleSort");
+                    System.out.println("Registro de BubbleSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    BubbleSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "BubbleSort");
+                    System.out.println("Registro de BubbleSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ######################## PARTE 9 ########################
+        ############### TESTES DO INSERTION SORT ################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    InsertionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "InsertionSort");
+                    System.out.println("Registro de InsertionSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ######################## PARTE 10 ########################
+        ############### TESTES DO SELECTION SORT ################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    SelectionSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "SelectionSort");
+                    System.out.println("Registro de SelectionSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ######################## PARTE 11 ########################
+        ################# TESTES DO MERGE SORT ##################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    MergeSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "MergeSort");
+                    System.out.println("Registro de MergeSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    MergeSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "MergeSort");
+                    System.out.println("Registro de MergeSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    MergeSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "MergeSort");
+                    System.out.println("Registro de MergeSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ######################## PARTE 12 #######################
+        ################# TESTES DO QUICK SORT ##################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    QuickSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "QuickSort");
+                    System.out.println("Registro de QuickSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    QuickSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "QuickSort");
+                    System.out.println("Registro de QuickSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    QuickSort(array, 0, array.length);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "QuickSort");
+                    System.out.println("Registro de QuickSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ################# PARTE 13 (uhu! PT!) ###################
+        ################# TESTES DO HEAP SORT ###################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    HeapSort(array, 0);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "HeapSort");
+                    System.out.println("Registro de HeapSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        /*
+        ######################## PARTE 14 #######################
+        ###### FINALIZANDO O TESTE DOS VALORES DISTINTOS ########
+        ############### TESTES DO COUNTING SORT #################
+        #########################################################
+         */
+        //aleatorios repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "ale", "rep", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort aleatorio"
+                            + elementos(i) + " adicionado");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //crescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(CrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort crescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        //decrescentes repetidos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+            for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
+                try {
+                    int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
+                    long start = System.currentTimeMillis();
+                    CountingSort(array);
+                    long elapsed = System.currentTimeMillis() - start;
+                    AddRegistro(elementos(i), "cre", "rep", elapsed, "CountingSort");
+                    System.out.println("Registro de CountingSort decrescente "
+                            + elementos(i) + " adicionado");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
+                    Logger.getLogger(Script.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        //finalizando a contagem de tempo total deste script (curiosidade)
+        long fim = System.currentTimeMillis() - inicio;
+        //convertendo para horas
+        long horas = ((fim / 1000) / 60) / 60;
+
+        JOptionPane.showMessageDialog(null, "Testes finalizados com sucesso!"
+                + "\nTempo aproximado: " + horas + " horas");
     }
 
     /**
