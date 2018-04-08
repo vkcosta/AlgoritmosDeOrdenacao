@@ -17,6 +17,7 @@
  */
 package VISAO;
 
+import LOGICA.Script;
 import static LOGICA.SortBy.BubbleSort;
 import static LOGICA.SortBy.CountingSort;
 import static LOGICA.SortBy.HeapSort;
@@ -323,7 +324,27 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(this, "Em construção...");
+
+        Thread script = new Script();
+
+        Thread aguarda = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Aguarde tela = new Aguarde();
+                    tela.setVisible(true);
+                    script.join();
+                    tela.dispose();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao conectar as Threads");
+                }
+            }
+        });
+
+        script.start();
+        aguarda.start();
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

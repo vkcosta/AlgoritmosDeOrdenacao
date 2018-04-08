@@ -61,7 +61,8 @@ public class Script extends Thread {
      *
      * @author Mateus Garcia
      */
-    public void run() {
+    @Override
+    public synchronized void run() {
         /*
         ################## INICIO: apontando os arquivos #####################
         Criarei vetores de Strings, nesses vetores, cada posição armazena
