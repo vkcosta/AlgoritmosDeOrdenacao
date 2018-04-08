@@ -1188,9 +1188,4 @@ public class Script extends Thread {
         JOptionPane.showMessageDialog(null, "erro ao executar elementos()");
         return 0;
     }
-
-    //testes aqui
-    public static void main(String[] args) {
-        new Script().run();
-    }
 }

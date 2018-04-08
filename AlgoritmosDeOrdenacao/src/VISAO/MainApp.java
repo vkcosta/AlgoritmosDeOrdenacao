@@ -75,7 +75,6 @@ public class MainApp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("I C A  01");
-        setAlwaysOnTop(true);
 
         jButton1.setText("Selecionar Arquivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
