@@ -98,6 +98,20 @@ public class Script extends Thread {
         AleatoriosDistintos[9] = "Test-inputs/aleatorios/distintos/ale-dist-640.txt";
         AleatoriosDistintos[10] = "Test-inputs/aleatorios/distintos/ale-dist-700.txt";
 
+        //construindo o vetor para os Aleatorios repetidos
+        String[] AleatoriosRepetidos = new String[11];
+        AleatoriosRepetidos[0] = "Test-inputs/aleatorios/repetidos/ale-rep-100.txt";
+        AleatoriosRepetidos[1] = "Test-inputs/aleatorios/repetidos/ale-rep-160.txt";
+        AleatoriosRepetidos[2] = "Test-inputs/aleatorios/repetidos/ale-rep-220.txt";
+        AleatoriosRepetidos[3] = "Test-inputs/aleatorios/repetidos/ale-rep-280.txt";
+        AleatoriosRepetidos[4] = "Test-inputs/aleatorios/repetidos/ale-rep-340.txt";
+        AleatoriosRepetidos[5] = "Test-inputs/aleatorios/repetidos/ale-rep-400.txt";
+        AleatoriosRepetidos[6] = "Test-inputs/aleatorios/repetidos/ale-rep-460.txt";
+        AleatoriosRepetidos[7] = "Test-inputs/aleatorios/repetidos/ale-rep-520.txt";
+        AleatoriosRepetidos[8] = "Test-inputs/aleatorios/repetidos/ale-rep-580.txt";
+        AleatoriosRepetidos[9] = "Test-inputs/aleatorios/repetidos/ale-rep-640.txt";
+        AleatoriosRepetidos[10] = "Test-inputs/aleatorios/repetidos/ale-rep-700.txt";
+
         //construindo o vetor para os Crescentes distintos
         String[] CrescentesDistintos = new String[11];
         CrescentesDistintos[0] = "Test-inputs/crescentes/distintos/cre-dist-100.txt";
@@ -112,6 +126,20 @@ public class Script extends Thread {
         CrescentesDistintos[9] = "Test-inputs/crescentes/distintos/cre-dist-640.txt";
         CrescentesDistintos[10] = "Test-inputs/crescentes/distintos/cre-dist-700.txt";
 
+        //construindo o vetor para os Crescentes repetidos
+        String[] CrescentesRepetidos = new String[11];
+        CrescentesRepetidos[0] = "Test-inputs/crescentes/repetidos/cre-rep-100.txt";
+        CrescentesRepetidos[1] = "Test-inputs/crescentes/repetidos/cre-rep-160.txt";
+        CrescentesRepetidos[2] = "Test-inputs/crescentes/repetidos/cre-rep-220.txt";
+        CrescentesRepetidos[3] = "Test-inputs/crescentes/repetidos/cre-rep-280.txt";
+        CrescentesRepetidos[4] = "Test-inputs/crescentes/repetidos/cre-rep-340.txt";
+        CrescentesRepetidos[5] = "Test-inputs/crescentes/repetidos/cre-rep-400.txt";
+        CrescentesRepetidos[6] = "Test-inputs/crescentes/repetidos/cre-rep-460.txt";
+        CrescentesRepetidos[7] = "Test-inputs/crescentes/repetidos/cre-rep-520.txt";
+        CrescentesRepetidos[8] = "Test-inputs/crescentes/repetidos/cre-rep-580.txt";
+        CrescentesRepetidos[9] = "Test-inputs/crescentes/repetidos/cre-rep-640.txt";
+        CrescentesRepetidos[10] = "Test-inputs/crescentes/repetidos/cre-rep-700.txt";
+
         //construindo o vetor para os Decrescentes distintos
         String[] DecrescentesDistintos = new String[11];
         DecrescentesDistintos[0] = "Test-inputs/decrescentes/distintos/dec-dist-100.txt";
@@ -125,6 +153,20 @@ public class Script extends Thread {
         DecrescentesDistintos[8] = "Test-inputs/decrescentes/distintos/dec-dist-580.txt";
         DecrescentesDistintos[9] = "Test-inputs/decrescentes/distintos/dec-dist-640.txt";
         DecrescentesDistintos[10] = "Test-inputs/decrescentes/distintos/dec-dist-700.txt";
+
+        //construindo o vetor dos Decrescentes repetidos
+        String[] DecrescentesRepetidos = new String[11];
+        DecrescentesRepetidos[0] = "Test-inputs/decrescentes/distintos/dec-rep-100.txt";
+        DecrescentesRepetidos[1] = "Test-inputs/decrescentes/distintos/dec-rep-160.txt";
+        DecrescentesRepetidos[2] = "Test-inputs/decrescentes/distintos/dec-rep-220.txt";
+        DecrescentesRepetidos[3] = "Test-inputs/decrescentes/distintos/dec-rep-280.txt";
+        DecrescentesRepetidos[4] = "Test-inputs/decrescentes/distintos/dec-rep-340.txt";
+        DecrescentesRepetidos[5] = "Test-inputs/decrescentes/distintos/dec-rep-400.txt";
+        DecrescentesRepetidos[6] = "Test-inputs/decrescentes/distintos/dec-rep-460.txt";
+        DecrescentesRepetidos[7] = "Test-inputs/decrescentes/distintos/dec-rep-520.txt";
+        DecrescentesRepetidos[8] = "Test-inputs/decrescentes/distintos/dec-rep-580.txt";
+        DecrescentesRepetidos[9] = "Test-inputs/decrescentes/distintos/dec-rep-640.txt";
+        DecrescentesRepetidos[10] = "Test-inputs/decrescentes/distintos/dec-rep-700.txt";
 
         //testando a integridade existencial dos arquivos antes de proseguir
         boolean valid = true;
