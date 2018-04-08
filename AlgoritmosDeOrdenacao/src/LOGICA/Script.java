@@ -215,6 +215,7 @@ public class Script extends Thread {
         ######################## PARTE 1 ########################
         ################ TESTES DO BUBBLE SORT ##################
         #########################################################
+        testes - OK
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -279,6 +280,7 @@ public class Script extends Thread {
         ######################## PARTE 2 ########################
         ############### TESTES DO INSERTION SORT ################
         #########################################################
+        testes - OK
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -343,6 +345,7 @@ public class Script extends Thread {
         ######################## PARTE 3 ########################
         ############### TESTES DO SELECTION SORT ################
         #########################################################
+        testes - OK
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -407,6 +410,7 @@ public class Script extends Thread {
         ######################## PARTE 4 ########################
         ################# TESTES DO MERGE SORT ##################
         #########################################################
+        testes - falhou
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -414,7 +418,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(AleatoriosDistintos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort aleatorio"
@@ -433,7 +437,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(CrescentesDistintos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "dist", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort crescente "
@@ -453,7 +457,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(DecrescentesDistintos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "dist", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort decrescente "
@@ -471,6 +475,7 @@ public class Script extends Thread {
         ######################## PARTE 5 ########################
         ################# TESTES DO QUICK SORT ##################
         #########################################################
+        testes - falhou
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -478,7 +483,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(AleatoriosDistintos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort aleatorio"
@@ -497,7 +502,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(CrescentesDistintos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "dist", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort crescente "
@@ -517,7 +522,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(DecrescentesDistintos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "dist", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort decrescente "
@@ -535,6 +540,7 @@ public class Script extends Thread {
         ######################## PARTE 6 ########################
         ################# TESTES DO HEAP SORT ##################
         #########################################################
+        testes - OK
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -600,6 +606,7 @@ public class Script extends Thread {
         ###### FINALIZANDO O TESTE DOS VALORES DISTINTOS ########
         ############### TESTES DO COUNTING SORT #################
         #########################################################
+        testes - OK
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -896,7 +903,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "rep", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort aleatorio"
@@ -915,7 +922,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(CrescentesRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "rep", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort crescente "
@@ -935,7 +942,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    MergeSort(array, 0, array.length);
+                    MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "rep", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort decrescente "
@@ -960,7 +967,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(AleatoriosRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "rep", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort aleatorio"
@@ -979,7 +986,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(CrescentesRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "rep", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort crescente "
@@ -999,7 +1006,7 @@ public class Script extends Thread {
                 try {
                     int[] array = Files.getIntArray(DecrescentesRepetidos[i]);
                     long start = System.currentTimeMillis();
-                    QuickSort(array, 0, array.length);
+                    QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "cre", "rep", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort decrescente "
