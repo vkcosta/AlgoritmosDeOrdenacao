@@ -9,4 +9,4 @@ Instrumento Complementar de Avaliação 01 da disciplina de Complexidade de Algo
 
 Trabalho em desenvolvimento desde 22/03/2018
 
-valor 5 pts
+valor 10 pts
