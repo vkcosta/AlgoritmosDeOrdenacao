@@ -156,17 +156,17 @@ public class Script extends Thread {
 
         //construindo o vetor dos Decrescentes repetidos
         String[] DecrescentesRepetidos = new String[11];
-        DecrescentesRepetidos[0] = "Test-inputs/decrescentes/distintos/dec-rep-100.txt";
-        DecrescentesRepetidos[1] = "Test-inputs/decrescentes/distintos/dec-rep-160.txt";
-        DecrescentesRepetidos[2] = "Test-inputs/decrescentes/distintos/dec-rep-220.txt";
-        DecrescentesRepetidos[3] = "Test-inputs/decrescentes/distintos/dec-rep-280.txt";
-        DecrescentesRepetidos[4] = "Test-inputs/decrescentes/distintos/dec-rep-340.txt";
-        DecrescentesRepetidos[5] = "Test-inputs/decrescentes/distintos/dec-rep-400.txt";
-        DecrescentesRepetidos[6] = "Test-inputs/decrescentes/distintos/dec-rep-460.txt";
-        DecrescentesRepetidos[7] = "Test-inputs/decrescentes/distintos/dec-rep-520.txt";
-        DecrescentesRepetidos[8] = "Test-inputs/decrescentes/distintos/dec-rep-580.txt";
-        DecrescentesRepetidos[9] = "Test-inputs/decrescentes/distintos/dec-rep-640.txt";
-        DecrescentesRepetidos[10] = "Test-inputs/decrescentes/distintos/dec-rep-700.txt";
+        DecrescentesRepetidos[0] = "Test-inputs/decrescentes/repetidos/dec-rep-100.txt";
+        DecrescentesRepetidos[1] = "Test-inputs/decrescentes/repetidos/dec-rep-160.txt";
+        DecrescentesRepetidos[2] = "Test-inputs/decrescentes/repetidos/dec-rep-220.txt";
+        DecrescentesRepetidos[3] = "Test-inputs/decrescentes/repetidos/dec-rep-280.txt";
+        DecrescentesRepetidos[4] = "Test-inputs/decrescentes/repetidos/dec-rep-340.txt";
+        DecrescentesRepetidos[5] = "Test-inputs/decrescentes/repetidos/dec-rep-400.txt";
+        DecrescentesRepetidos[6] = "Test-inputs/decrescentes/repetidos/dec-rep-460.txt";
+        DecrescentesRepetidos[7] = "Test-inputs/decrescentes/repetidos/dec-rep-520.txt";
+        DecrescentesRepetidos[8] = "Test-inputs/decrescentes/repetidos/dec-rep-580.txt";
+        DecrescentesRepetidos[9] = "Test-inputs/decrescentes/repetidos/dec-rep-640.txt";
+        DecrescentesRepetidos[10] = "Test-inputs/decrescentes/repetidos/dec-rep-700.txt";
 
         //testando a integridade existencial dos arquivos antes de proseguir
         boolean valid = true;
