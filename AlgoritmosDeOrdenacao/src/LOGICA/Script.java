@@ -410,7 +410,6 @@ public class Script extends Thread {
         ######################## PARTE 4 ########################
         ################# TESTES DO MERGE SORT ##################
         #########################################################
-        testes - falhou
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -475,7 +474,6 @@ public class Script extends Thread {
         ######################## PARTE 5 ########################
         ################# TESTES DO QUICK SORT ##################
         #########################################################
-        testes - falhou
          */
         //aleatorios distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
