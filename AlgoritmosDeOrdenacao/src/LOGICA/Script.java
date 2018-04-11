@@ -210,7 +210,7 @@ public class Script extends Thread {
 
         //contando tempo total deste script a partir daqui. apenas por curiosidade
         long inicio = System.currentTimeMillis();
-
+      
         /*
         ######################## PARTE 1 ########################
         ################ TESTES DO BUBBLE SORT ##################
@@ -218,7 +218,7 @@ public class Script extends Thread {
         testes - OK
          */
         //aleatorios distintos
-        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+                for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
             for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
                 try {
                     int[] array = Files.getIntArray(AleatoriosDistintos[i]);
@@ -226,7 +226,7 @@ public class Script extends Thread {
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "BubbleSort");
-                    System.out.println("Registro de BubbleSort aleatorio"
+                    System.out.println("Registro de BubbleSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -264,7 +264,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "BubbleSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "BubbleSort");
                     System.out.println("Registro de BubbleSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -291,7 +291,7 @@ public class Script extends Thread {
                     InsertionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "InsertionSort");
-                    System.out.println("Registro de InsertionSort aleatorio"
+                    System.out.println("Registro de InsertionSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -329,7 +329,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     InsertionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "InsertionSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "InsertionSort");
                     System.out.println("Registro de InsertionSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -356,7 +356,7 @@ public class Script extends Thread {
                     SelectionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "SelectionSort");
-                    System.out.println("Registro de SelectionSort aleatorio"
+                    System.out.println("Registro de SelectionSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -394,7 +394,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     SelectionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "SelectionSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "SelectionSort");
                     System.out.println("Registro de SelectionSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -421,7 +421,7 @@ public class Script extends Thread {
                     MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "MergeSort");
-                    System.out.println("Registro de MergeSort aleatorio"
+                    System.out.println("Registro de MergeSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -459,7 +459,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "MergeSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -485,7 +485,7 @@ public class Script extends Thread {
                     QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "QuickSort");
-                    System.out.println("Registro de QuickSort aleatorio"
+                    System.out.println("Registro de QuickSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -525,7 +525,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "QuickSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "QuickSort");
                     System.out.println("Registro de QuickSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -554,7 +554,7 @@ public class Script extends Thread {
                     HeapSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "HeapSort");
-                    System.out.println("Registro de HeapSort aleatorio"
+                    System.out.println("Registro de HeapSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -592,7 +592,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     HeapSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "HeapSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "HeapSort");
                     System.out.println("Registro de HeapSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -620,7 +620,7 @@ public class Script extends Thread {
                     CountingSort(array);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "dist", elapsed, "CountingSort");
-                    System.out.println("Registro de CountingSort aleatorio"
+                    System.out.println("Registro de CountingSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -658,7 +658,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     CountingSort(array);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "dist", elapsed, "CountingSort");
+                    AddRegistro(elementos(i), "dec", "dist", elapsed, "CountingSort");
                     System.out.println("Registro de CountingSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -717,7 +717,7 @@ public class Script extends Thread {
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "rep", elapsed, "BubbleSort");
-                    System.out.println("Registro de BubbleSort aleatorio"
+                    System.out.println("Registro de BubbleSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -755,7 +755,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     BubbleSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "BubbleSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "BubbleSort");
                     System.out.println("Registro de BubbleSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -819,7 +819,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     InsertionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "InsertionSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "InsertionSort");
                     System.out.println("Registro de InsertionSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -883,7 +883,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     SelectionSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "SelectionSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "SelectionSort");
                     System.out.println("Registro de SelectionSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -909,7 +909,7 @@ public class Script extends Thread {
                     MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "rep", elapsed, "MergeSort");
-                    System.out.println("Registro de MergeSort aleatorio"
+                    System.out.println("Registro de MergeSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -946,7 +946,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     MergeSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "MergeSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "MergeSort");
                     System.out.println("Registro de MergeSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -972,7 +972,7 @@ public class Script extends Thread {
                     QuickSort(array, 0, array.length - 1);
                     long elapsed = System.currentTimeMillis() - start;
                     AddRegistro(elementos(i), "ale", "rep", elapsed, "QuickSort");
-                    System.out.println("Registro de QuickSort aleatorio"
+                    System.out.println("Registro de QuickSort aleatorio "
                             + elementos(i) + " adicionado");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo" + ex);
@@ -1077,7 +1077,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     HeapSort(array, 0);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "HeapSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "HeapSort");
                     System.out.println("Registro de HeapSort decrescente "
                             + elementos(i) + " adicionado");
 
@@ -1142,7 +1142,7 @@ public class Script extends Thread {
                     long start = System.currentTimeMillis();
                     CountingSort(array);
                     long elapsed = System.currentTimeMillis() - start;
-                    AddRegistro(elementos(i), "cre", "rep", elapsed, "CountingSort");
+                    AddRegistro(elementos(i), "dec", "rep", elapsed, "CountingSort");
                     System.out.println("Registro de CountingSort decrescente "
                             + elementos(i) + " adicionado");
 
