@@ -247,6 +247,54 @@ public class SortBy {
             QuickSort(vetor, posicaoPivo + 1, fim);
         }
     }
+    
+    /****************************************************************************************************************
+     *                                  TESTES COM O QUICK SORT                                                     *
+     * **************************************************************************************************************/
+    /*
+    public static void QuickSort(int[] vet,int ini,int fim){
+        
+    int pivot;
+    if(ini < fim){
+        pivot = partition(vet, ini, fim);
+        QuickSort(vet, ini, pivot-1);
+        QuickSort(vet, pivot+1, fim);
+    }
+    //return vet;
+}
+
+public static int partition(int[] vet,int ini,int fim){
+    int pivot,a,b;
+    pivot=vet[fim];
+    a=fim;
+    b=fim;
+    //imprime(vet,ini,fim);
+    while(vet[a]<=pivot && a >= ini){
+        a--;
+    }
+   // printf("%d:%d\n",a,b);
+    empurra(vet,a,b);
+    b--;
+    a--;
+    //imprime(vet,ini,fim);
+    return 0;
+}
+
+public static void empurra(int[] vet,int a,int b){
+    int aux;
+    while(a < b){
+        aux=vet[a];
+        vet[a]=vet[a+1];
+        vet[a+1]=aux;
+        a++;
+    }
+}
+
+/*
+    /****************************************************************************************************************
+     *                                  TESTES COM O QUICK SORT                                                     *
+     * **************************************************************************************************************/
+    
 
     /**
      * O algoritmo HeapSort foi um dos mais complexos para ser compreendido e
