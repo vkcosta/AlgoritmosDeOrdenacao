@@ -1017,7 +1017,6 @@ public class Script extends Thread {
             }
 
         }
-        //FIM DO TRECHO DESATIVADO
 
         /*
         ################# PARTE 13 (uhu! PT!) ###################
