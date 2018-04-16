@@ -210,7 +210,7 @@ public class Script extends Thread {
 
         //contando tempo total deste script a partir daqui. apenas por curiosidade
         long inicio = System.currentTimeMillis();
-      
+
         /*
         ######################## PARTE 1 ########################
         ################ TESTES DO BUBBLE SORT ##################
@@ -218,7 +218,7 @@ public class Script extends Thread {
         testes - OK
          */
         //aleatorios distintos
-                for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
+        for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
             for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
                 try {
                     int[] array = Files.getIntArray(AleatoriosDistintos[i]);
@@ -494,8 +494,6 @@ public class Script extends Thread {
             }
 
         }
-        //o trecho abaixo foi desativado por estar causando StackOverFlows
-        /*
 
         //crescentes distintos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
@@ -535,11 +533,9 @@ public class Script extends Thread {
                 }
             }
 
-        } 
-        //FIM DO TRECHO DESATIVADO
-         */
+        }
 
- /*
+        /*
         ######################## PARTE 6 ########################
         ################# TESTES DO HEAP SORT ##################
         #########################################################
@@ -981,8 +977,7 @@ public class Script extends Thread {
             }
 
         }
-        //o trecho abaixo foi desativado por estar causando StackOverFlows
-        /*
+
         //crescentes repetidos
         for (int i = 0; i < 11; i++) { //executa testes com os 11 arquivos
             for (int z = 0; z < NumExec; z++) {//executa NumExec testes em cada arquivo
@@ -1023,9 +1018,8 @@ public class Script extends Thread {
 
         }
         //FIM DO TRECHO DESATIVADO
-        
-         */
- /*
+
+        /*
         ################# PARTE 13 (uhu! PT!) ###################
         ################# TESTES DO HEAP SORT ###################
         #########################################################
