@@ -17,7 +17,6 @@
  */
 package LOGICA;
 
-import static LOGICA.Util.Vetores.imprime;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +30,7 @@ public class SortBy {
     /**
      * Este método utiliza o algoritmo BubbleSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas
-     * Complexidade: O(tamanho²)
+     * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -71,7 +70,7 @@ public class SortBy {
      * Este método utiliza o algoritmo InsertionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: O(tamanho²)
+     * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -110,7 +109,7 @@ public class SortBy {
      * Este método utiliza o algoritmo SelectionSort<br>
      * Utilize este método para ordenar sequências numéricas pequenas em ordem
      * crescente<br>
-     * Complexidade: O(tamanho²)
+     * Complexidade: O(n²)
      *
      * @author Mateus garcia
      * @param nums Array de Inteiros contendo a sequencia numerica a ser
@@ -149,7 +148,6 @@ public class SortBy {
 
     /**
      * Algoritmo auxiliar para o MergeSort, ele intercala vetores menores <br>
-     * Complexidade: O(log tamanho) (eu acho...)
      *
      * @author Mateus Garcia
      *
@@ -184,7 +182,7 @@ public class SortBy {
     /**
      * Algoritmo MergeSort. Utilize este método para ordenar sequencias
      * numéricas grandes<br>
-     * Complexidade: O(tamanho log tamanho)
+     * Complexidade: O(n log n)
      *
      * @author Mateus Garcia
      * @param vetor Array de inteiros a ser ordenado
@@ -201,100 +199,79 @@ public class SortBy {
     }
 
     /**
-     * Metodo auxiliar do algoritmo QuickSort
+     * Algoritmo auxiliar do QuickSort, responsável por fazer as quebras do
+     * vetor em partes menores
      *
      * @author Mateus Garcia
-     * @param vetor
-     * @param inicio
-     * @param fim
-     * @return
+     * @param vetor array de inteiros a ser dividido
+     * @param cantoEsquerdo posição da extrema esquerda, onde tudo começara.
+     * geralmente é 0.
+     * @param cantoDireito posição da extrema direita (#Bolsonaro2018!) onde
+     * tudo termina (profético...)
+     * @return devolve um inteiro representando a posição do indice
      */
-    private static int separar(int[] vetor, int inicio, int fim) {
-        int pivo = vetor[inicio];
-        int i = inicio + 1, f = fim;
-        while (i <= f) {
-            if (vetor[i] <= pivo) {
+    public static int quebrar(int[] vetor, int cantoEsquerdo, int cantoDireito) {
+
+        int i = cantoEsquerdo, j = cantoDireito;
+
+        int aux;
+
+        int pivo = vetor[(cantoEsquerdo + cantoDireito) / 2];
+
+        while (i <= j) {
+
+            while (vetor[i] < pivo) {
                 i++;
-            } else if (pivo < vetor[f]) {
-                f--;
-            } else {
-                int troca = vetor[i];
-                vetor[i] = vetor[f];
-                vetor[f] = troca;
-                i++;
-                f--;
             }
+
+            while (vetor[j] > pivo) {
+                j--;
+            }
+
+            if (i <= j) {
+
+                aux = vetor[i];
+
+                vetor[i] = vetor[j];
+
+                vetor[j] = aux;
+
+                i++;
+
+                j--;
+
+            }
+
         }
-        vetor[inicio] = vetor[f];
-        vetor[f] = pivo;
-        return f;
+
+        return i;
+
     }
 
     /**
-     * Algoritmo QuickSort. Utilize este método para ordenar sequências
-     * numéricas grandes relativamente ordenadas <br>
-     * Complexidade O(tamanho log tamanho) podendo chegar a O(tamanho²)
+     * Algoritmo QuickSort, geralmente o melhor para a maioria dos casos. <br>
+     * Complexidade: O(n log n)
      *
      * @author Mateus Garcia
-     * @param vetor Array de inteiros contendo os numeros a serem ordenados
-     * @param inicio posição inicial do Array onde se inicia o processo
-     * @param fim posição final do array onde o processo chega.
+     * @param vetor array de inteiros a ser ordenado
+     * @param cantoEsquerdo posição da extrema esquerda, onde tudo começara.
+     * geralmente é 0.
+     * @param cantoDireito posição da extrema direita (#Bolsonaro2018!) onde
+     * tudo termina (profético...)
      */
-    public static void QuickSort(int[] vetor, int inicio, int fim) {
-        if (inicio < fim) {
-            int posicaoPivo = separar(vetor, inicio, fim);
-            QuickSort(vetor, inicio, posicaoPivo - 1);
-            QuickSort(vetor, posicaoPivo + 1, fim);
+    public static void QuickSort(int[] vetor, int cantoEsquerdo, int cantoDireito) {
+
+        int indice = quebrar(vetor, cantoEsquerdo, cantoDireito);
+
+        if (cantoEsquerdo < indice - 1) {
+            QuickSort(vetor, cantoEsquerdo, indice - 1);
         }
-    }
-    
-    /****************************************************************************************************************
-     *                                  TESTES COM O QUICK SORT                                                     *
-     * **************************************************************************************************************/
-    /*
-    public static void QuickSort(int[] vet,int ini,int fim){
-        
-    int pivot;
-    if(ini < fim){
-        pivot = partition(vet, ini, fim);
-        QuickSort(vet, ini, pivot-1);
-        QuickSort(vet, pivot+1, fim);
-    }
-    //return vet;
-}
 
-public static int partition(int[] vet,int ini,int fim){
-    int pivot,a,b;
-    pivot=vet[fim];
-    a=fim;
-    b=fim;
-    //imprime(vet,ini,fim);
-    while(vet[a]<=pivot && a >= ini){
-        a--;
-    }
-   // printf("%d:%d\n",a,b);
-    empurra(vet,a,b);
-    b--;
-    a--;
-    //imprime(vet,ini,fim);
-    return 0;
-}
+        if (indice < cantoDireito) {
+            QuickSort(vetor, indice, cantoDireito);
+        }
 
-public static void empurra(int[] vet,int a,int b){
-    int aux;
-    while(a < b){
-        aux=vet[a];
-        vet[a]=vet[a+1];
-        vet[a+1]=aux;
-        a++;
     }
-}
-
-/*
-    /****************************************************************************************************************
-     *                                  TESTES COM O QUICK SORT                                                     *
-     * **************************************************************************************************************/
-    
 
     /**
      * O algoritmo HeapSort foi um dos mais complexos para ser compreendido e
@@ -334,7 +311,7 @@ public static void empurra(int[] vet,int a,int b){
     }
 
     /**
-     * Método auxiliar do Quick Sort
+     * Método auxiliar do Heap Sort
      */
     private static void empilha(int[] subvetor, int n, int i) {
         int maior = i;  // inicializa o maior como a raiz da arvore
@@ -410,13 +387,5 @@ public static void empurra(int[] vet,int a,int b){
         }
 
         return aux;
-    }
-
-    public static void main(String[] args) {
-        //testes aqui
-        //int[] x = {9, 6, 2, 8, 7, 1, 0, 3, 4, 5};
-        int[] x = {0,1,2,3,4,5,6,7,8,9};
-        QuickSort(x, 0, x.length - 1);
-        imprime(x);
     }
 }
