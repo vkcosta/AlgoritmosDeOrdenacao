@@ -1,0 +1,4 @@
+select elementos, ordem, dados, round(avg(tempo),2), algoritmo
+from Testes
+where algoritmo="CountingSort" and ordem="ale" and dados="rep"
+group by elementos

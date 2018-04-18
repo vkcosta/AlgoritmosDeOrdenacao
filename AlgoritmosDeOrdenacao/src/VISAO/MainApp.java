@@ -17,8 +17,13 @@
  */
 package VISAO;
 
+import LOGICA.Script;
 import static LOGICA.SortBy.BubbleSort;
+import static LOGICA.SortBy.CountingSort;
+import static LOGICA.SortBy.HeapSort;
 import static LOGICA.SortBy.InsertionSort;
+import static LOGICA.SortBy.MergeSort;
+import static LOGICA.SortBy.QuickSort;
 import static LOGICA.SortBy.SelectionSort;
 import LOGICA.Util.Files;
 import LOGICA.Util.Vetores;
@@ -54,21 +59,22 @@ public class MainApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        patchLB = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         AlgBOX = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        ordemBOX = new javax.swing.JComboBox<>();
         saidaTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        quantTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        entradaTF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("I C A  01");
-        setAlwaysOnTop(true);
-
-        patchLB.setText("Nenhum arquivo selecionado..");
 
         jButton1.setText("Selecionar Arquivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +83,7 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort" }));
+        AlgBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Algoritmo", "Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort", "Quick Sort", "Heap Sort", "Counting Sort" }));
 
         jButton2.setText("Execute");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,61 +92,96 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
-        ordemBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a ordem", "Crescente", "Decrescente"}));
-
         jLabel1.setText("Nome do arquivo de saída");
 
-        jLabel2.setText("Quantidade de numeros a ser ordenada");
+        quantTF.setText("0");
+
+        jLabel2.setText("Quantidade de numeros a ser ordenada ( deixe 0 para ordenar TODOS )");
+
+        jLabel3.setText("Escolha o algoritmo..");
+
+        entradaTF.setEditable(false);
+        entradaTF.setText("Nenhum arquivo selecionado...");
+
+        jLabel4.setText("Arquivo de entrada dos dados:");
+
+        jButton3.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jButton3.setText("Rodar o script de testes automático");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Ou experimente os métodos manuais abaixo como requisitados pelo trabalho...");
+
+        jLabel6.setText("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2))
+            .addComponent(entradaTF)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(saidaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(AlgBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(ordemBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(quantTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AlgBOX, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(patchLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(saidaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AlgBOX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordemBOX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saidaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(patchLB, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(entradaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -155,9 +196,9 @@ public class MainApp extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fc.showOpenDialog(patchLB);
+        fc.showOpenDialog(entradaTF);
         entrada = fc.getSelectedFile();
-        patchLB.setText(entrada.getPath());
+        entradaTF.setText(entrada.getPath());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -172,11 +213,19 @@ public class MainApp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nenhum algoritmo foi selecionado.");
             AlgBOX.grabFocus();
         }
-        if (ordemBOX.getSelectedIndex() == 0) { //checa ordem selecionada
+        try { //checa a validade do valor para quantidade a ser ordenada
+            int num = Integer.parseInt(quantTF.getText());
+            if (num < 0) {
+                valid = false;
+                JOptionPane.showMessageDialog(this, "quantidade nao pode ser negativa");
+                quantTF.grabFocus();
+            }
+        } catch (Exception e) { // o valor em quantTF não é um numero inteiro
             valid = false;
-            JOptionPane.showMessageDialog(this, "Nenhuma ordem de execução foi selecionada");
-            ordemBOX.grabFocus();
+            JOptionPane.showMessageDialog(this, "quantidade invalida");
+            quantTF.grabFocus();
         }
+
         if (saidaTF.getText().isEmpty()) { //checa arquivo de saída
             valid = false;
             JOptionPane.showMessageDialog(this, "nenhum arquivo de saída especificado");
@@ -187,8 +236,7 @@ public class MainApp extends javax.swing.JFrame {
         if (valid) {
             long start; // tempo em milisegundos do começo da execução
             long elapsed = 0; //diferença de tempo entre o começo e o final da execução
-
-            String ordem; //parametro que será passado para o método
+            int quant = Integer.parseInt(quantTF.getText());
 
             saida = new File(saidaTF.getText() + ".txt");
             int[] Array = {0, 0}; //inicialização do vetor a ser ordenado
@@ -210,39 +258,58 @@ public class MainApp extends javax.swing.JFrame {
                         + "arquivo de entrada\n" + ex);
                 dispose();
             }
-            switch (ordemBOX.getSelectedIndex()) {
-                case 1:
-                    ordem = "cre";
-                    break;
-                case 2:
-                    ordem = "dec";
-                    break;
-                default:
-                    ordem = "ERRO"; //situação WTF
-            }
 
             switch (AlgBOX.getSelectedIndex()) {
-                case 1: //bubble sort
+                case 1: //bubble Sort
                     start = System.currentTimeMillis();
-                    BubbleSort(Array, ordem);
+                    BubbleSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 2: // insertion sort
+                case 2: // insertion Sort
                     start = System.currentTimeMillis();
-                    InsertionSort(Array, ordem);
+                    InsertionSort(Array, quant);
                     elapsed = System.currentTimeMillis() - start;
                     break;
-                case 3: //selection sort
+                case 3: //selection Sort
                     start = System.currentTimeMillis();
-                    SelectionSort(Array, ordem);
+                    SelectionSort(Array, quant);
+                    elapsed = System.currentTimeMillis() - start;
+                    break;
+                case 4:// merge Sort
+                    start = System.currentTimeMillis();
+                    if (quant != 0) {
+                        MergeSort(Array, 0, quant);
+                    } else {
+                        MergeSort(Array, 0, Array.length - 1);
+                    }
+                    elapsed = System.currentTimeMillis() - start;
+                    break;
+                case 5: //quick Sort
+                    start = System.currentTimeMillis();
+                    if (quant != 0) {
+                        QuickSort(Array, 0, quant);
+                    } else {
+                        QuickSort(Array, 0, Array.length - 1);
+                    }
+                    elapsed = System.currentTimeMillis() - start;
+                    System.out.println("Elapsed: " + elapsed);
+                    break;
+                case 6: //Heap Sort
+                    start = System.currentTimeMillis();
+                    HeapSort(Array, quant);
+                    elapsed = System.currentTimeMillis() - start;
+                    break;
+                case 7: //Counting Sort
+                    start = System.currentTimeMillis();
+                    Array = CountingSort(Array);
                     elapsed = System.currentTimeMillis() - start;
                     break;
             }
 
+            //faz a escrita dos dados processados no arquivo de saída
             try {
-                String tempo = ("\n\nTempo de execução: " + elapsed / 60000
-                        + " Minutos, " + elapsed % 60000 + ","
-                        + (elapsed % 60000) % 1000 + " segundos");
+                String tempo = ("\r\n\r\nTempo de execução: " + elapsed
+                        + " milisegundos");
 
                 Files.setFileContentAsSingleLine(saida.getPath(), Vetores.ToString(Array));
                 Files.AddThisLineAtEOF(saida.getPath(), tempo);
@@ -254,6 +321,30 @@ public class MainApp extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        Thread script = new Script();
+
+        Thread aguarda = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Aguarde tela = new Aguarde();
+                    tela.setVisible(true);
+                    script.join();
+                    tela.dispose();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao conectar as Threads");
+                }
+            }
+        });
+
+        script.start();
+        aguarda.start();
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,13 +383,17 @@ public class MainApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> AlgBOX;
+    private javax.swing.JTextField entradaTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<String> ordemBOX;
-    private javax.swing.JLabel patchLB;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField quantTF;
     private javax.swing.JTextField saidaTF;
     // End of variables declaration//GEN-END:variables
 }
